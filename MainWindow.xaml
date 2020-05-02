@@ -9,7 +9,6 @@
         Title="ESOW" Height="450" Width="800"
         Background="Aqua">
     <Grid>
-
         <TabControl Name="TabCont" TabStripPlacement="Left" Background="Aqua" >
             <TabItem Name="ReadyTextListButton" Header="Text" Height="40" >
                 <Grid Background="Aqua">
@@ -36,6 +35,39 @@
             </TabItem>
 
             <TabItem Name="UserTextButton" Height="40" Header="Your Text" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="125*"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="82*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180*"/>
+                        <ColumnDefinition Width="103*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="119*"/>
+                        <ColumnDefinition Width="179*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" 
+                           Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" AllowDrop="True" Drop="DropEvent" >
+                    </Image>
+                    <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">
+                        Tittle
+                    </TextBlock>
+                    <TextBox Name ="CustomTittle" Text="" Grid.Row="1" Grid.Column="3" Margin="10"></TextBox>
+
+                    <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">
+                        Author
+                    </TextBlock>
+                    <TextBox Name ="CustomA" Text="" Grid.Row="3" Grid.Column="3" Margin="10"></TextBox>
+                    <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Margin="20" Name="MakeCustomButton" Content="Load Custom Text" FontSize="15" Click="MakeCustomButton_OnClick" ></Button>
+
+                    
+                </Grid>
+
 
             </TabItem>
 
@@ -51,10 +83,6 @@
                         <RowDefinition Height="300*"/>
                         <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
-
-
-
-
 
                 </Grid>
             </TabItem>
@@ -72,17 +100,36 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="3" Margin="10" AutoWordSelection="True" >
+                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="3" Margin="5" AutoWordSelection="True" >
                         <FlowDocument>
-                            <Paragraph>
-                                <Run Text="RichTextBox dsadsad dsadasd weweq 123"/>
+                            <Paragraph >
+                                <Run Text="123"/>
                             </Paragraph>
+
                         </FlowDocument>
                     </RichTextBox>
                     <Button Content="Translate" Name="TranslateBotton" Grid.Row="2" Grid.Column="1" Margin="15" Click="TranslateButton"></Button>
                     <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="10,10,10,0"/>
-                    <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" />
-                    <Button Content="ShowTranslate" Grid.Row="3" Grid.Column="3" Margin="10" Click="ShowTranslateButton" ></Button>
+                    <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  FontSize="20" HorizontalAlignment="Center" />
+                    <Button Content="ShowTranslate" Grid.Row="3" Grid.Column="3" Margin="10" Name="TempBut" Click="ShowTranslateButton" ></Button>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem Name="CustomWorkZone" Height="0"  Width="0"  >
+                <Grid Background="Aqua">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+
+
 
                 </Grid>
 

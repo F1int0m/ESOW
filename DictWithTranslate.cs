@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace ESOW
 {
@@ -10,11 +9,8 @@ namespace ESOW
     {
         private Dictionary<string, List<string>> Dict;
 
-        public async void Add(string word)
-        {
 
-        }
-
-
+        
     }
+    
 }

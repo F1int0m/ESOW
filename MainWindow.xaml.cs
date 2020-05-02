@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ namespace ESOW
 {
     public partial class MainWindow : Window
     {
+        public Document CurrentDocument;
+        private string LoadedFile;
+        private bool IsTranslate = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -51,30 +55,84 @@ namespace ESOW
         {
             foreach (var doc in d)
             {
-                var t = new Button();
-                t.Content = doc.Title;
-                t.Height = 60;
-                t.Click += (s, a) =>
-                {
-                    WorkTittle.Content = doc.Title;
-                    WorkBox.Document.Blocks.Clear();
-                    WorkBox.Document.Blocks.Add(new Paragraph(new Run(doc.Content)));
-                    TabCont.SelectedIndex = 3;
-                };
-                Panel.Children.Add(t);
+                CreateButton(doc, true);
             }
+        }
+
+        private void CreateButton(Document doc, bool isOurText)
+        {
+            var t = new Button();
+            t.Content = doc.Title;
+            t.Height = 60;
+            t.Click += (s, a) =>
+            {
+                ResBox.Document.Blocks.Clear();
+                CurrentDocument = doc;
+                WorkTittle.Content = CurrentDocument.Title;
+                TempBut.Visibility = isOurText? Visibility.Visible:Visibility.Hidden;
+                WorkBox.Document.Blocks.Clear();
+                WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
+                TabCont.SelectedIndex += 3;
+            };
+            Panel.Children.Add(t);
         }
 
         private void TranslateButton(object sender, RoutedEventArgs e)
         {
-            var h =new Translater();
+            var t =new Translator();
+            var lang = IsTranslate ? "ru-en" : "en-ru";
             ResBox.Document.Blocks.Clear();
-            ResBox.Document.Blocks.Add(new Paragraph(new Run(h.Translate(WorkBox.Selection.Text))));
+            ResBox.Document.Blocks.Add(new Paragraph(new Run(t.Translate(WorkBox.Selection.Text,lang))));
         }
 
         private void ShowTranslateButton(object sender, RoutedEventArgs e)
         {
-            
+            if (IsTranslate)
+            {
+                WorkBox.Document.Blocks.Clear();
+                WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
+                IsTranslate = false;
+            }
+            else
+            {
+                WorkBox.Document.Blocks.Clear();
+                WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.TranslatedContent)));
+                IsTranslate = true;
+            }
+        }
+
+        private void DropEvent(object sender, DragEventArgs e)
+        {
+
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] paths = (string[])e.Data.GetData(DataFormats.FileDrop);
+                using (var reader = new StreamReader(paths.First()))
+                {
+                    LoadedFile = reader.ReadToEnd();
+                }
+            }
+
+        }
+
+
+        private void MakeCustomButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (CustomTittle.Text=="")
+            {
+                return;
+            }
+            var temp = new Document(CustomA.Text+"\n"+ CustomTittle.Text,LoadedFile,"");
+            CurrentDocument = temp;
+            WorkTittle.Content = CurrentDocument.Title;
+            TempBut.Visibility = Visibility.Hidden;
+            WorkBox.Document.Blocks.Clear();
+            WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
+            TabCont.SelectedIndex += 2;
+            CreateButton(temp,false);
+
+
+
         }
     }
 }

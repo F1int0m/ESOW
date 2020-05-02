@@ -1,0 +1,6 @@
+Real Tittle
+###
+Real content. ABC. DE.
+Additionally to answer of A.R. please note that if you want to use TextBox to drop you have to know following stuff.
+
+TextBox seems to have already some default handling for DragAndDrop. If your data object is a String, it simply works. Other types are not handled and you get the Forbidden mouse effect and your Drop handler is never called.
