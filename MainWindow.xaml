@@ -7,9 +7,15 @@
         xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
         Title="ESOW" Height="450" Width="800"
-        Background="Aqua">
+        Background="Aqua" Visibility="Visible">
     <Grid>
         <TabControl Name="TabCont" TabStripPlacement="Left" Background="Aqua" >
+            <TabItem Height="40" BorderBrush="Aqua" Foreground="Aqua" OpacityMask="Aqua" Background="Aqua" >
+                <TabItem.Header>
+                    <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png"></Image>
+                </TabItem.Header>
+
+            </TabItem>
             <TabItem Name="ReadyTextListButton" Header="Text" Height="40" >
                 <Grid Background="Aqua">
                     <Grid.RowDefinitions>
@@ -28,8 +34,6 @@
                     </ScrollViewer>
                     <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" Grid.Column="1" Grid.Row="1"></Image>
                     <Label Content="Select text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
-
-
 
                 </Grid>
             </TabItem>
@@ -65,7 +69,7 @@
                     <TextBox Name ="CustomA" Text="" Grid.Row="3" Grid.Column="3" Margin="10"></TextBox>
                     <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Margin="20" Name="MakeCustomButton" Content="Load Custom Text" FontSize="15" Click="MakeCustomButton_OnClick" ></Button>
 
-                    
+
                 </Grid>
 
 
@@ -100,7 +104,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="3" Margin="5" AutoWordSelection="True" >
+                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="3" Margin="5,0,5,5" AutoWordSelection="True" >
                         <FlowDocument>
                             <Paragraph >
                                 <Run Text="123"/>
@@ -110,7 +114,7 @@
                     </RichTextBox>
                     <Button Content="Translate" Name="TranslateBotton" Grid.Row="2" Grid.Column="1" Margin="15" Click="TranslateButton"></Button>
                     <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="10,10,10,0"/>
-                    <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  FontSize="20" HorizontalAlignment="Center" />
+                    <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     <Button Content="ShowTranslate" Grid.Row="3" Grid.Column="3" Margin="10" Name="TempBut" Click="ShowTranslateButton" ></Button>
 
                 </Grid>

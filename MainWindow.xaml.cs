@@ -62,15 +62,16 @@ namespace ESOW
         private void CreateButton(Document doc, bool isOurText)
         {
             var t = new Button();
-            t.Content = doc.Title;
+            t.Content = isOurText?doc.Title:"(*)"+doc.Title;
             t.Height = 60;
+            t.Background = isOurText ? Brushes.LightGray :Brushes.CadetBlue;
             t.Click += (s, a) =>
             {
                 ResBox.Document.Blocks.Clear();
+                WorkBox.Document.Blocks.Clear();
                 CurrentDocument = doc;
                 WorkTittle.Content = CurrentDocument.Title;
-                TempBut.Visibility = isOurText? Visibility.Visible:Visibility.Hidden;
-                WorkBox.Document.Blocks.Clear();
+                TempBut.Visibility = isOurText ? Visibility.Visible : Visibility.Hidden;
                 WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
                 TabCont.SelectedIndex += 3;
             };
@@ -127,12 +128,10 @@ namespace ESOW
             WorkTittle.Content = CurrentDocument.Title;
             TempBut.Visibility = Visibility.Hidden;
             WorkBox.Document.Blocks.Clear();
+            ResBox.Document.Blocks.Clear();
             WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
             TabCont.SelectedIndex += 2;
             CreateButton(temp,false);
-
-
-
         }
     }
 }
