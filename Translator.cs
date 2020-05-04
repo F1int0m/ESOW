@@ -13,6 +13,12 @@ namespace ESOW
 
         private readonly string DictAPI =
             "dict.1.1.20200504T132406Z.98106a680b482674.2ec80fe65d53c0349acf03bb37dadc2727a18fdd";
+        /// <summary>
+        /// Получает перевод слова и ошибку, если перевод не удался
+        /// </summary>
+        /// <param name="ToTranslateString"> Строка для перевода</param>
+        /// <param name="lang"> Направление перевода, например ru-en или en-ru</param>
+        /// <returns></returns>
         public string Translate(string ToTranslateString, string lang)
         {
             if (ToTranslateString.Length <= 0) return "";

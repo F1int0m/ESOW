@@ -23,21 +23,21 @@ namespace ESOW
         private string LoadedFile;
         private bool IsTranslate = false;
         private Translator Translator = new Translator();
+        private List<Document> listOfDocuments;
         public MainWindow()
         {
             InitializeComponent();
-            CreateButtons(CreateDocumentsList());
-
+            listOfDocuments = CreateDocumentsList();
+            CreateButtons(listOfDocuments);
         }
 
-        private static List<Document> CreateDocumentsList()
+        private List<Document> CreateDocumentsList()
         {
             var list = new List<Document>();
             for (int i = 0; i < 10; i++)
             {
                 list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно")));
             }
-
             return list;
         }
 
