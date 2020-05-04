@@ -22,6 +22,7 @@ namespace ESOW
         public Document CurrentDocument;
         private string LoadedFile;
         private bool IsTranslate = false;
+        private Translator Translator = new Translator();
         public MainWindow()
         {
             InitializeComponent();
@@ -80,10 +81,9 @@ namespace ESOW
 
         private void TranslateButton(object sender, RoutedEventArgs e)
         {
-            var t =new Translator();
             var lang = IsTranslate ? "ru-en" : "en-ru";
             ResBox.Document.Blocks.Clear();
-            ResBox.Document.Blocks.Add(new Paragraph(new Run(t.Translate(WorkBox.Selection.Text,lang))));
+            ResBox.Document.Blocks.Add(new Paragraph(new Run(Translator.Translate(WorkBox.Selection.Text,lang))));
         }
 
         private void ShowTranslateButton(object sender, RoutedEventArgs e)
