@@ -111,7 +111,6 @@
   <ItemGroup>
     <Resource Include="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

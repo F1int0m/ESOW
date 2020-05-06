@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows.Controls;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace ESOW
 {
@@ -48,29 +51,33 @@ namespace ESOW
 
 
 
-        public List<string> Lookup(string word, string lang)
+        public (string  transcription ,List<string> translation) Lookup(string word, string lang)
         {
-            return null;
-            if (word.Length <= 0) return new List<string>();
-            var res = new List<string>();
+            if (word.Length <= 0) return ("", new List<string>());
+            
+           
 
             var request = WebRequest.Create("https://dictionary.yandex.net/api/v1/dicservice.json/lookup?"
                                             + "key=" + DictAPI
                                             + "&lang=" + lang
                                             + "&text=" + word);
             var response = request.GetResponse();
+
+            var res = new List<string>();
+            var tr = "";
             using (StreamReader stream = new StreamReader(response.GetResponseStream()))
             {
                 var line = stream.ReadLine();
-                if (line == null) return res;
+                if (line == null) return ("", new List<string>());
                 var lookup = JsonConvert.DeserializeObject<Lookup>(line);
-
+                res = lookup.Def.SelectMany(x => x.Tr.Select(z => z.Text)).ToList();
+                tr = lookup.Def[0].Ts!=null? lookup.Def[0].Ts:"No transcritption";
             }
 
 
 
 
-            return new List<string>();
+            return (tr, res);
         }
     }
     class Translation
@@ -80,15 +87,65 @@ namespace ESOW
         public string[] text { get; set; }
     }
 
-    class Lookup
+    public partial class Lookup
     {
-        public string def { get; set; }
-        public string[] tr { get; set; }
-        public string[] syn { get; set; }
-        public string[] mean { get; set; }
-        public string[] ex { get; set; }
+        [JsonProperty("head")]
+        public Head Head { get; set; }
+
+        [JsonProperty("def")]
+        public Def[] Def { get; set; }
     }
 
+    public partial class Def
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
 
+        [JsonProperty("pos")]
+        public string Pos { get; set; }
+
+        [JsonProperty("tr")]
+        public Tr[] Tr { get; set; }
+
+        [JsonProperty("ts")]
+        public string Ts { get; set; }
+    }
+
+    public partial class Tr
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("pos")]
+        public string Pos { get; set; }
+
+        [JsonProperty("syn")]
+        public Mean[] Syn { get; set; }
+
+        [JsonProperty("mean")]
+        public Mean[] Mean { get; set; }
+
+        [JsonProperty("ex")]
+        public Ex[] Ex { get; set; }
+    }
+
+    public partial class Ex
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("tr")]
+        public Mean[] Tr { get; set; }
+    }
+
+    public partial class Mean
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public partial class Head
+    {
+    }
 
 }

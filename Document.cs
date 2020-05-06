@@ -9,20 +9,26 @@ namespace ESOW
     public class Document
     {
         public string Title { get; private set; }
+        public Difficult Difficult { get; set; }
         public string Content { get; private set; }
-
         public string TranslatedContent { get; private set; }
 
-        public Document(string title, string content, string translate)
+        public Document(string title, string content, string translate, Difficult diff)
         {
             Title = title;
             Content = content;
             TranslatedContent = translate;
+            Difficult = diff;
         }
-        public Document()
-        {
-            Title = "";
-            Content = "";
-        }
+    }
+
+
+    public enum Difficult  
+    {
+        Custom,
+        Easy,
+        Medium,
+        Hard,
+        UHard
     }
 }

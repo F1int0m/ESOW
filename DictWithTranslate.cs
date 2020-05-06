@@ -5,28 +5,35 @@ namespace ESOW
 {
     public class DictWithTranslate
     {
-        private Dictionary<string, List<string>> Dict;
-        public bool ContainsWord(string word) => Dict.ContainsKey(word);
+        private Dictionary<string, List<string>> MainDict;
+        private Dictionary<string, string> TrDict;
 
-        public List<string> this[string index] => Dict.ContainsKey(index) ? Dict[index] :new List<string>();
+
+        public bool ContainsWord(string word) => MainDict.ContainsKey(word);
+
+        public List<string> GetTranslations(string word) => MainDict.ContainsKey(word) ? MainDict[word] :new List<string>();
+
+        public string GetTranscription(string word) => TrDict.ContainsKey(word) ? TrDict[word] :"";
 
 
         /// <summary>
         /// Добавляет слово в текущий словарь
         /// </summary>
-        /// <param name="word">Слово для перевода</param>
+        /// <param name="word">Одно слово для перевода</param>
         /// <param name="lang">ru-en, en-ru</param>
         /// <param name="translator">Переводчик</param>
         public void Add(string word, string lang, Translator translator)
         {
-            Dict[word] = translator.Lookup(word, lang);
-            Update();
+            var temp = translator.Lookup(word, lang);
+            MainDict[word] = temp.translation;
+            TrDict[word] = temp.transcription;
+            //Update();
         }
 
 
         private void Update()
         {
-            Dict = Dict.OrderBy(x => x.Key).ToDictionary(x => x.Key, z => z.Value);
+            MainDict = MainDict.OrderBy(x => x.Key).ToDictionary(x => x.Key, z => z.Value);
         }
     }
     

@@ -36,7 +36,7 @@ namespace ESOW
             var list = new List<Document>();
             for (int i = 0; i < 10; i++)
             {
-                list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно")));
+                list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"),  Difficult.Easy));
             }
             return list;
         }
@@ -54,7 +54,7 @@ namespace ESOW
 
         private void CreateButtons(List<Document> d)
         {
-            foreach (var doc in d)
+            foreach (var doc in d.OrderBy(x=>x.Difficult))
             {
                 CreateButton(doc, true);
             }
@@ -62,21 +62,30 @@ namespace ESOW
 
         private void CreateButton(Document doc, bool isOurText)
         {
-            var t = new Button();
-            t.Content = isOurText?doc.Title:"(*)"+doc.Title;
-            t.Height = 60;
-            t.Background = isOurText ? Brushes.LightGray :Brushes.CadetBlue;
+            var t = new Button
+            {
+                Content = isOurText ? doc.Title : "(*)" + doc.Title,
+                Height = 60,
+                Background = SelectBackgroundColoor(doc.Difficult)
+            };
             t.Click += (s, a) =>
             {
                 ResBox.Document.Blocks.Clear();
                 WorkBox.Document.Blocks.Clear();
                 CurrentDocument = doc;
                 WorkTittle.Content = CurrentDocument.Title;
-                TempBut.Visibility = isOurText ? Visibility.Visible : Visibility.Hidden;
                 WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
                 TabCont.SelectedIndex += 3;
             };
             Panel.Children.Add(t);
+        }
+
+        private static SolidColorBrush SelectBackgroundColoor(Difficult dif)
+        {
+            return dif == Difficult.Custom ? Brushes.CornflowerBlue :
+                dif == Difficult.Easy ? Brushes.LightGreen :
+                dif == Difficult.Medium ? Brushes.LightYellow :
+                dif == Difficult.Hard ? Brushes.Orange : Brushes.IndianRed;
         }
 
         private void TranslateButton(object sender, RoutedEventArgs e)
@@ -123,7 +132,7 @@ namespace ESOW
             {
                 return;
             }
-            var temp = new Document(CustomA.Text+"\n"+ CustomTittle.Text,LoadedFile,"");
+            var temp = new Document(CustomA.Text+"\n"+ CustomTittle.Text,LoadedFile,"",Difficult.Custom);
             CurrentDocument = temp;
             WorkTittle.Content = CurrentDocument.Title;
             TempBut.Visibility = Visibility.Hidden;
