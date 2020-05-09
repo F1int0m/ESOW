@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -24,12 +25,16 @@ namespace ESOW
         private bool IsTranslate = false;
         private Translator Translator = new Translator();
         private List<Document> listOfDocuments;
+        private DictWithTranslate Dictionary = new DictWithTranslate();
+        private string GetLang() => IsTranslate ? "ru-en" : "en-ru";
         public MainWindow()
         {
             InitializeComponent();
             listOfDocuments = CreateDocumentsList();
             CreateButtons(listOfDocuments);
+            Dictionary.LoadDict();
         }
+
 
         private List<Document> CreateDocumentsList()
         {
@@ -66,7 +71,7 @@ namespace ESOW
             {
                 Content = isOurText ? doc.Title : "(*)" + doc.Title,
                 Height = 60,
-                Background = SelectBackgroundColoor(doc.Difficult)
+                Background = SelectBackgroundColor(doc.Difficult)
             };
             t.Click += (s, a) =>
             {
@@ -80,32 +85,30 @@ namespace ESOW
             Panel.Children.Add(t);
         }
 
-        private static SolidColorBrush SelectBackgroundColoor(Difficult dif)
+        private static SolidColorBrush SelectBackgroundColor(Difficult dif)
         {
             return dif == Difficult.Custom ? Brushes.CornflowerBlue :
                 dif == Difficult.Easy ? Brushes.LightGreen :
                 dif == Difficult.Medium ? Brushes.LightYellow :
                 dif == Difficult.Hard ? Brushes.Orange : Brushes.IndianRed;
         }
-
+        //Пожалуйста, научите Рому использовать git
         private void TranslateButton(object sender, RoutedEventArgs e)
         {
-            var lang = IsTranslate ? "ru-en" : "en-ru";
             ResBox.Document.Blocks.Clear();
-            ResBox.Document.Blocks.Add(new Paragraph(new Run(Translator.Translate(WorkBox.Selection.Text,lang))));
+            ResBox.Document.Blocks.Add(new Paragraph(new Run(Translator.Translate(WorkBox.Selection.Text, GetLang()))));
         }
 
         private void ShowTranslateButton(object sender, RoutedEventArgs e)
         {
+            WorkBox.Document.Blocks.Clear();
             if (IsTranslate)
             {
-                WorkBox.Document.Blocks.Clear();
                 WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
                 IsTranslate = false;
             }
             else
             {
-                WorkBox.Document.Blocks.Clear();
                 WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.TranslatedContent)));
                 IsTranslate = true;
             }
@@ -122,7 +125,6 @@ namespace ESOW
                     LoadedFile = reader.ReadToEnd();
                 }
             }
-
         }
 
 
@@ -141,6 +143,16 @@ namespace ESOW
             WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
             TabCont.SelectedIndex += 2;
             CreateButton(temp,false);
+        }
+
+        private void AddToDict_OnClick(object sender, RoutedEventArgs e)
+        {
+            Dictionary.Add(WorkBox.Selection.Text, GetLang(), Translator);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Dictionary.SaveDict();
         }
     }
 }

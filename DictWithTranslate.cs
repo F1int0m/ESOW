@@ -1,12 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace ESOW
 {
     public class DictWithTranslate
     {
-        private Dictionary<string, List<string>> MainDict;
-        private Dictionary<string, string> TrDict;
+        [JsonProperty]
+        private Dictionary<string, List<string>> MainDict = new Dictionary<string, List<string>>();
+        [JsonProperty]
+        private Dictionary<string, string> TrDict = new Dictionary<string, string>();
 
 
         public bool ContainsWord(string word) => MainDict.ContainsKey(word);
@@ -15,6 +21,32 @@ namespace ESOW
 
         public string GetTranscription(string word) => TrDict.ContainsKey(word) ? TrDict[word] :"";
 
+        public static DictWithTranslate GetDictionaryFromJson()
+        {
+
+            return new DictWithTranslate(); 
+        }
+
+
+        public void SaveDict()
+        {
+            File.WriteAllText("../../Dict/Dict.json",JsonConvert.SerializeObject(this));
+        }
+
+        public void LoadDict()
+        {
+            try
+            {
+                var temp = JsonConvert.DeserializeObject<DictWithTranslate>(File.ReadAllText("../../Dict/Dict.json"));
+                if (temp == null) return;
+                MainDict = temp.MainDict;
+                TrDict = temp.TrDict;
+            }
+            catch (Exception e)
+            {
+                // ignored
+            }
+        }
 
         /// <summary>
         /// Добавляет слово в текущий словарь
@@ -25,6 +57,7 @@ namespace ESOW
         public void Add(string word, string lang, Translator translator)
         {
             var temp = translator.Lookup(word, lang);
+            if(temp.translation.Count<1) return;
             MainDict[word] = temp.translation;
             TrDict[word] = temp.transcription;
             //Update();

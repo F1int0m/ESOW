@@ -68,14 +68,11 @@ namespace ESOW
             using (StreamReader stream = new StreamReader(response.GetResponseStream()))
             {
                 var line = stream.ReadLine();
-                if (line == null) return ("", new List<string>());
+                if (line == null||line.Length<25) return ("", new List<string>());
                 var lookup = JsonConvert.DeserializeObject<Lookup>(line);
                 res = lookup.Def.SelectMany(x => x.Tr.Select(z => z.Text)).ToList();
                 tr = lookup.Def[0].Ts!=null? lookup.Def[0].Ts:"No transcritption";
             }
-
-
-
 
             return (tr, res);
         }
@@ -89,9 +86,6 @@ namespace ESOW
 
     public partial class Lookup
     {
-        [JsonProperty("head")]
-        public Head Head { get; set; }
-
         [JsonProperty("def")]
         public Def[] Def { get; set; }
     }
@@ -127,6 +121,7 @@ namespace ESOW
 
         [JsonProperty("ex")]
         public Ex[] Ex { get; set; }
+        //Когда-нибудь мне поможет моя команда
     }
 
     public partial class Ex
@@ -143,9 +138,4 @@ namespace ESOW
         [JsonProperty("text")]
         public string Text { get; set; }
     }
-
-    public partial class Head
-    {
-    }
-
 }

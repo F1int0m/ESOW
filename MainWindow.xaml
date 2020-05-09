@@ -7,7 +7,7 @@
         xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
         Title="ESOW" Height="720" Width="1024"
-        Background="Aqua" Visibility="Visible">
+        Background="Aqua" Visibility="Visible" Closing="Window_Closing">
     <Grid>
         <TabControl Name="TabCont" TabStripPlacement="Left" Background="Aqua" >
             <TabItem Height="40" BorderBrush="Aqua" Foreground="Aqua" OpacityMask="Aqua" Background="Aqua" >
@@ -105,7 +105,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" AutoWordSelection="True" >
+                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" AutoWordSelection="True"  >
                         <FlowDocument>
                             <Paragraph >
                                 <Run Text="123"/>
@@ -115,8 +115,9 @@
                     </RichTextBox>
                     <Button Content="Translate" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15" Click="TranslateButton"></Button>
                     <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="10,0" />
-                    <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="399,31,202,31" />
+                    <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  />
                     <Button Content="ShowTranslate" Grid.Row="4" Grid.Column="1" Margin="10" Name="TempBut" Click="ShowTranslateButton" ></Button>
+                    <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15" Content="Add to dictionary" Click="AddToDict_OnClick"></Button>
 
                 </Grid>
 
