@@ -75,7 +75,7 @@
 
             </TabItem>
 
-            <TabItem Name="DictZone" Height="40"  Header="Dictionary">
+            <TabItem Name="DictZone" Height="40"  Header="Dictionary"   MouseEnter="DictLoadingOnPage">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
@@ -87,6 +87,44 @@
                         <RowDefinition Height="300*"/>
                         <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
+                    <ListBox Name="ListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.Row="1"  >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Name="DictPanel"  Margin="5">
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="0" MouseEnter="CreateToolTip" Margin="0,0,15,0" >
+                                            <TextBlock.ToolTip>
+                                                <ToolTip >
+                                                    
+                                                </ToolTip>
+                                            </TextBlock.ToolTip>
+                                        </TextBlock>
+                                        <Button  Content="{Binding Path=Value}" Grid.Column="1"></Button>
+
+
+
+                                    </Grid>
+                                    
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+
+                        
+
+
+                    </ListBox>
+
+
 
                 </Grid>
             </TabItem>

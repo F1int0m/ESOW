@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,13 +27,19 @@ namespace ESOW
         private Translator Translator = new Translator();
         private List<Document> listOfDocuments;
         private DictWithTranslate Dictionary = new DictWithTranslate();
+        public object ListBoxItem { get; set; }
         private string GetLang() => IsTranslate ? "ru-en" : "en-ru";
+
+
         public MainWindow()
         {
             InitializeComponent();
             listOfDocuments = CreateDocumentsList();
             CreateButtons(listOfDocuments);
             Dictionary.LoadDict();
+            ListBox.ItemsSource = Dictionary.Dict;  //Не обновляет словарь, при  добавлении новго слова. Проблема в XML
+
+
         }
 
 
@@ -153,6 +160,26 @@ namespace ESOW
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Dictionary.SaveDict();
+        }
+
+        private void CreateToolTip(object sender, MouseEventArgs e)
+        {
+            var bb = sender as TextBlock;
+            var  tt  = new ToolTip();
+            tt.Content = Dictionary.GetTranscription(bb.Text);
+            bb.ToolTip = tt;
+
+        }
+
+        private void FrameworkElement_OnInitialized(object sender, EventArgs e)
+        {
+            var btm = sender as Button;
+
+        }
+
+        private void DictLoadingOnPage(object sender, EventArgs e)
+        {
+            ListBox.ItemsSource = Dictionary.Dict;
         }
     }
 }

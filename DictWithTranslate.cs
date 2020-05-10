@@ -14,6 +14,8 @@ namespace ESOW
         [JsonProperty]
         private Dictionary<string, string> TrDict = new Dictionary<string, string>();
 
+        public Dictionary<string, List<string>> Dict => MainDict;
+
 
         public bool ContainsWord(string word) => MainDict.ContainsKey(word);
 
