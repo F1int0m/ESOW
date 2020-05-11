@@ -81,6 +81,7 @@ namespace ESOW
                 WorkTittle.Content = CurrentDocument.Title;
                 WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
                 TabCont.SelectedIndex += 3;
+                TempBut.Visibility = isOurText ? Visibility.Visible : Visibility.Hidden;
             };
             Panel.Children.Add(t);
         }

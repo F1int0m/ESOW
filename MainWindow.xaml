@@ -74,7 +74,7 @@
                         Author
                     </TextBlock>
                     <TextBox Name ="CustomA" Text="" Grid.Row="3" Grid.Column="3" Margin="10"></TextBox>
-                    <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Margin="60" Name="MakeCustomButton" Content="Load Custom Text" FontSize="15" Click="MakeCustomButton_OnClick" Style="{DynamicResource ButtonStyle}" ></Button>
+                    <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Load Custom Text" FontSize="15" Click="MakeCustomButton_OnClick" Style="{DynamicResource ButtonStyle}" ></Button>
 
 
                 </Grid>
