@@ -1,21 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ESOW
 {
@@ -27,7 +20,6 @@ namespace ESOW
         private Translator Translator = new Translator();
         private List<Document> listOfDocuments;
         private DictWithTranslate Dictionary = new DictWithTranslate();
-        public object ListBoxItem { get; set; }
         private string GetLang() => IsTranslate ? "ru-en" : "en-ru";
 
 
@@ -37,8 +29,8 @@ namespace ESOW
             listOfDocuments = CreateDocumentsList();
             CreateButtons(listOfDocuments);
             Dictionary.LoadDict();
-            ListBox.ItemsSource = Dictionary.Dict;  //Не обновляет словарь, при  добавлении новго слова. Проблема в XML
 
+            ListBox.ItemsSource = Dictionary.Dict;  //Не обновляет словарь, при  добавлении новго слова. Проблема в XML
 
         }
 
@@ -78,7 +70,8 @@ namespace ESOW
             {
                 Content = isOurText ? doc.Title : "(*)" + doc.Title,
                 Height = 60,
-                Background = SelectBackgroundColor(doc.Difficult)
+                Background = SelectBackgroundColor(doc.Difficult),
+                Style = 
             };
             t.Click += (s, a) =>
             {
@@ -171,15 +164,18 @@ namespace ESOW
 
         }
 
-        private void FrameworkElement_OnInitialized(object sender, EventArgs e)
-        {
-            var btm = sender as Button;
 
-        }
-
-        private void DictLoadingOnPage(object sender, EventArgs e)
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            ListBox.ItemsSource = Dictionary.Dict;
+            string style = "DarkTheme";
+            // определяем путь к файлу ресурсов
+            var uri = new Uri(style + ".xaml", UriKind.Relative);
+            // загружаем словарь ресурсов
+            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+            // очищаем коллекцию ресурсов приложения
+            Application.Current.Resources.Clear();
+            // добавляем загруженный словарь ресурсов
+            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
         }
     }
 }

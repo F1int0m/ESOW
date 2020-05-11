@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
@@ -32,6 +33,7 @@ namespace ESOW
 
         public void SaveDict()
         {
+            var с = System.Environment.CurrentDirectory;
             File.WriteAllText("../../Dict/Dict.json",JsonConvert.SerializeObject(this));
         }
 
@@ -63,6 +65,15 @@ namespace ESOW
             MainDict[word] = temp.translation;
             TrDict[word] = temp.transcription;
             //Update();
+        }
+
+        public void Remove(string word)
+        {
+            if (!MainDict.ContainsKey(word))
+            {
+                return;
+            }
+            MainDict.Remove(word);
         }
 
 
