@@ -82,7 +82,7 @@
 
             </TabItem>
 
-            <TabItem Name="DictZone" Height="40"  Header="Dictionary" >
+            <TabItem Name="DictZone" Height="40"  Header="Dictionary"  MouseEnter="RefreshListbox">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>

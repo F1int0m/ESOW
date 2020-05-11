@@ -70,8 +70,8 @@ namespace ESOW
             {
                 Content = isOurText ? doc.Title : "(*)" + doc.Title,
                 Height = 60,
-                Background = SelectBackgroundColor(doc.Difficult),
-                Style = 
+                Background = SelectBackgroundColor(doc.Difficult)
+               
             };
             t.Click += (s, a) =>
             {
@@ -177,5 +177,12 @@ namespace ESOW
             // добавляем загруженный словарь ресурсов
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
         }
+
+        private void RefreshListbox(object sender, MouseEventArgs e)
+        {
+           ListBox.Items.Refresh();
+        }
+
+        
     }
 }
