@@ -4,30 +4,28 @@
 
 
     <Style x:Key="TextStyle" TargetType="RichTextBox">
-        <Setter Property="Background" Value="Gray" />
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
     </Style>
     <Style x:Key="TextBoxStyle" TargetType="TextBox">
-        <Setter Property="Background" Value="Gray" />
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
     </Style>
     <Style x:Key="TextBlockStyle" TargetType="TextBlock">
-        <Setter Property="Background" Value="Gray" />
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
     </Style>
-
 
     <Style x:Key="WindowStyle" TargetType="Window">
-        <Setter Property="Background" Value="DarkGray" />
+        <Setter Property="Background" Value="Aqua" />
     </Style>
-
-
     <Style x:Key="TabStyle" TargetType="TabControl">
-        <Setter Property="Background" Value="DarkGray" />
+        <Setter Property="Background" Value="Aqua" />
     </Style>
+
     <Style x:Key="ButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="Gray" />
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
         <Setter Property="BorderBrush" Value="Gray" />
     </Style>
     

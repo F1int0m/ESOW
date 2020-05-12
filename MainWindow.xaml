@@ -6,11 +6,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="ESOW" Height="500" Width="1024"
-        Background="Aqua" Visibility="Visible" Closing="Window_Closing">
+        Visibility="Visible" Closing="Window_Closing"
+        Style="{DynamicResource WindowStyle}">
     
     <Grid>
-        <TabControl Name="TabCont" TabStripPlacement="Left" Background="Aqua" >
-            <TabItem Height="40" BorderBrush="Aqua" Foreground="Aqua" OpacityMask="Aqua" Background="Aqua" >
+        <TabControl Name="TabCont" TabStripPlacement="Left" Style="{DynamicResource TabStyle}" >
+            <TabItem Height="40"  >
                 <TabItem.Header>
                     <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" Stretch="UniformToFill" />
                 </TabItem.Header>
@@ -65,15 +66,15 @@
                     <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" 
                            Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" AllowDrop="True" Drop="DropEvent" >
                     </Image>
-                    <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">
+                    <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{DynamicResource TextBlockStyle}">
                         Tittle
                     </TextBlock>
-                    <TextBox Name ="CustomTittle" Text="" Grid.Row="1" Grid.Column="3" Margin="10"></TextBox>
+                    <TextBox Name ="CustomTittle" Text="" Grid.Row="1" Grid.Column="3" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">
+                    <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{DynamicResource TextBlockStyle}">
                         Author
                     </TextBlock>
-                    <TextBox Name ="CustomA" Text="" Grid.Row="3" Grid.Column="3" Margin="10"></TextBox>
+                    <TextBox Name ="CustomA" Text="" Grid.Row="3" Grid.Column="3" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
                     <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Load Custom Text" FontSize="15" Click="MakeCustomButton_OnClick" Style="{DynamicResource ButtonStyle}" ></Button>
 
 
@@ -104,9 +105,12 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="0" MouseEnter="CreateToolTip" Margin="0,0,15,0" >
+                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="0" MouseEnter="CreateToolTip" Margin="0,0,15,0" Style="{DynamicResource TextBlockStyle}">
                                         </TextBlock>
-                                        <Button  Content="{Binding Path=Value}" Grid.Column="1" Style="{DynamicResource ButtonStyle}"></Button>
+                                        <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}">
+                                            
+                                                
+                                        </ComboBox>
 
                                     </Grid>
                                     
@@ -123,7 +127,7 @@
 
 
                     </ListBox>
-                    <Button Content="Button" Grid.Column="1"  Width="100" Height="50" Click="ButtonBase_OnClick" Style="{DynamicResource ButtonStyle}"/>
+                    <Button Content="Button" Grid.Column="1"  Width="100" Height="50"  Style="{DynamicResource ButtonStyle}"/>
 
 
 
@@ -144,8 +148,8 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" AutoWordSelection="True"  >
-                        <FlowDocument>
+                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" AutoWordSelection="True" IsReadOnly="True" Style="{DynamicResource TextStyle}" >
+                        <FlowDocument >
                             <Paragraph >
                                 <Run Text="123"/>
                             </Paragraph>
@@ -153,13 +157,22 @@
                         </FlowDocument>
                     </RichTextBox>
                     <Button Content="Translate" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15" Click="TranslateButton" Style="{DynamicResource ButtonStyle}"></Button>
-                    <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="10,0" />
+                    <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="10,0" Style="{DynamicResource TextStyle}" />
                     <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  />
                     <Button Content="ShowTranslate" Grid.Row="4" Grid.Column="1" Margin="10" Name="TempBut" Click="ShowTranslateButton" Style="{DynamicResource ButtonStyle}" ></Button>
                     <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15" Content="Add to dictionary" Click="AddToDict_OnClick" Style="{DynamicResource ButtonStyle}"></Button>
 
                 </Grid>
 
+            </TabItem>
+            <TabItem Height="40"  Header="Settings">
+                <Grid>
+                    <RadioButton Content="Default" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True"/>
+                    <RadioButton Content="Dark" VerticalAlignment="Center" Checked="DarkThemeChanger" />
+                    <Button Height="100" Width="100" Style="{DynamicResource ButtonStyle}"></Button>
+
+
+                </Grid>
             </TabItem>
 
         </TabControl>

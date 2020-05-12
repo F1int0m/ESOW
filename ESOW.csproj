@@ -67,6 +67,10 @@
     <Compile Include="Tests\DictTest.cs" />
     <Compile Include="Tests\TranslateTest.cs" />
     <Compile Include="Translator.cs" />
+    <Page Include="WhiteTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DarkTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -30,6 +30,7 @@ namespace ESOW
             CreateButtons(listOfDocuments);
             Dictionary.LoadDict();
 
+
             ListBox.ItemsSource = Dictionary.Dict;  //Не обновляет словарь, при  добавлении новго слова. Проблема в XML
 
         }
@@ -166,7 +167,14 @@ namespace ESOW
         }
 
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        
+
+        private void RefreshListbox(object sender, MouseEventArgs e)
+        {
+           ListBox.Items.Refresh();
+        }
+
+        private void DarkThemeChanger(object sender, RoutedEventArgs e)
         {
             string style = "DarkTheme";
             // определяем путь к файлу ресурсов
@@ -177,13 +185,17 @@ namespace ESOW
             Application.Current.Resources.Clear();
             // добавляем загруженный словарь ресурсов
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+
         }
 
-        private void RefreshListbox(object sender, MouseEventArgs e)
+        private void WhiteThemeChanger(object sender, RoutedEventArgs e)
         {
-           ListBox.Items.Refresh();
-        }
+            string style = "WhiteTheme";
+            var uri = new Uri(style + ".xaml", UriKind.Relative);
+            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
 
-        
+        }
     }
 }
