@@ -31,7 +31,7 @@ namespace ESOW
             Dictionary.LoadDict();
 
 
-            ListBox.ItemsSource = Dictionary.Dict;  //Не обновляет словарь, при  добавлении новго слова. Проблема в XML
+            ListBox.ItemsSource = Dictionary.Dict;  
 
         }
 

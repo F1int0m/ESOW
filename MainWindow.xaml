@@ -99,21 +99,22 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Name="DictPanel"  Margin="5">
-
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="0" MouseEnter="CreateToolTip" Margin="0,0,15,0" Style="{DynamicResource TextBlockStyle}">
+
+                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip" Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}">
+                                            <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}"  Text="{Binding Path=Value[0]}"  Grid.Column="10" Grid.Row="10" Margin="15,15,15,0">
+
+                                            </ComboBox>
+
                                         </TextBlock>
-                                        <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}">
-                                            
-                                                
-                                        </ComboBox>
+
 
                                     </Grid>
-                                    
+
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
