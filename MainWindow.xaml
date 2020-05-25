@@ -5,26 +5,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="ESOW" Height="500" Width="1024"
+        Title="ESOW"
         Visibility="Visible" Closing="Window_Closing"
-        Style="{DynamicResource WindowStyle}">
-    
+        Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" Background="White">
+
     <Grid>
-        <TabControl Name="TabCont" TabStripPlacement="Left" Style="{DynamicResource TabStyle}" >
-            <TabItem Height="40"  >
-                <TabItem.Header>
-                    <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" Stretch="UniformToFill" />
-                </TabItem.Header>
-                <Grid>
-
-
-
-
-
-                </Grid>
-
-            </TabItem>
-            <TabItem Name="ReadyTextList" Header="Text" Height="40" >
+        <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" >
+            
+            <TabItem Name="ReadyTextList" Header="Text" Height="40" MinWidth="100" MinHeight="100" MaxWidth="150" MaxHeight="150" Margin="10,20" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50*"/>
@@ -40,13 +28,13 @@
 
                         </StackPanel>
                     </ScrollViewer>
-                    <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" Grid.Column="1" Grid.Row="1"></Image>
+                    <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" Grid.Column="1" Grid.Row="1"/>
                     <Label Content="Select text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
 
                 </Grid>
             </TabItem>
 
-            <TabItem Name="UserTextZone" Height="40" Header="Your Text" >
+            <TabItem Name="UserTextZone" Height="40" Header="Your Text" MinWidth="100" MinHeight="100" MaxWidth="150" MaxHeight="150" Margin="10,20">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100*"/>
@@ -83,7 +71,7 @@
 
             </TabItem>
 
-            <TabItem Name="DictZone" Height="40"  Header="Dictionary"  MouseEnter="RefreshListbox">
+            <TabItem Name="DictZone" Height="40"  Header="Dictionary"  MouseEnter="RefreshListbox" MinWidth="100" MinHeight="100" MaxWidth="150" MaxHeight="150" Margin="10,20">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
@@ -124,7 +112,7 @@
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
 
-                        
+
 
 
                     </ListBox>
@@ -166,7 +154,7 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Height="40"  Header="Settings">
+            <TabItem Height="40"  Header="Settings" MinWidth="100" MinHeight="100" MaxWidth="150" MaxHeight="150" Margin="10,20">
                 <Grid>
                     <RadioButton Content="Default" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True"/>
                     <RadioButton Content="Dark" VerticalAlignment="Center" Checked="DarkThemeChanger" />

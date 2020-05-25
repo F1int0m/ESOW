@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -122,6 +123,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dict\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CustomText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dict.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Texts.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
