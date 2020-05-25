@@ -35,6 +35,7 @@ namespace ESOW
         {
             var с = System.Environment.CurrentDirectory;
             File.WriteAllText("../../Dict/Dict.json",JsonConvert.SerializeObject(this));
+            var a = 1 + 5657;
         }
 
         public void LoadDict()
