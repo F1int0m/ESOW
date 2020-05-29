@@ -10,11 +10,18 @@
         Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" Background="#FFC5DCFF" Foreground="{x:Null}">
 
     <Grid>
-        <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Source="Resources/logo.png" Panel.ZIndex="5" MinHeight="2.5 cm" MaxHeight="3 cm"/>
+        <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Source="Resources/logo.png" Panel.ZIndex="5"/>
         <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" TabIndex="214748364" Panel.ZIndex="1" >
-            <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}"  >
+            <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0"  >
+
                 <TabItem.Header>
-                    <Grid MinWidth="2.5 cm" MinHeight="2.5 cm"/>
+                    <Grid MinWidth="2.5 cm" MinHeight="2.5 cm">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="Resources/k.png"/>
+                        </Grid.Background>
+
+                    </Grid>
+
                 </TabItem.Header>
             </TabItem>
             <TabItem Name="ReadyTextList" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
@@ -35,7 +42,7 @@
                 </TabItem.Header>
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="2.5 cm"/>
                         <RowDefinition Height="300*"/>
                         <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
@@ -176,7 +183,7 @@
             <TabItem Name="WorkZone" Height="0"  Width="0"  >
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="13*"/>
+                        <RowDefinition Height="2.5 cm"/>
                         <RowDefinition Height="46*"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
@@ -187,9 +194,15 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" AutoWordSelection="True" IsReadOnly="True" Style="{DynamicResource TextStyle}" >
+                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" AutoWordSelection="True" IsReadOnly="True" Style="{DynamicResource TextStyle}" BorderBrush="{x:Null}" FontFamily="Ubuntu" FontSize="14" Block.LineHeight="6" >
+                        <RichTextBox.Background>
+                            <SolidColorBrush Color="{DynamicResource mainBG}"/>
+                        </RichTextBox.Background>
+                        <RichTextBox.SelectionBrush>
+                            <SolidColorBrush Color="#FF9696FF"/>
+                        </RichTextBox.SelectionBrush>
                         <FlowDocument >
-                            <Paragraph >
+                            <Paragraph Padding="0,0,0,8">
                                 <Run Text="123"/>
                             </Paragraph>
 
@@ -230,7 +243,7 @@
             </TabItem>
 
         </TabControl>
-        
+
     </Grid>
 
 </Window>

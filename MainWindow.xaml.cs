@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ESOW
 {
@@ -39,9 +41,21 @@ namespace ESOW
         private List<Document> CreateDocumentsList()
         {
             var list = new List<Document>();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 3; i++)
             {
                 list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"),  Difficult.Easy));
+            }
+            for (int i = 3; i < 6; i++)
+            {
+                list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.Medium));
+            }
+            for (int i = 6; i < 9; i++)
+            {
+                list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.Hard));
+            }
+            for (int i = 9; i < 12; i++)
+            {
+                list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.UHard));
             }
             return list;
         }
@@ -71,8 +85,8 @@ namespace ESOW
             {
                 Content = isOurText ? doc.Title : "(*)" + doc.Title,
                 Height = 60,
-                Background = SelectBackgroundColor(doc.Difficult)
-               
+                Background = SelectBackground(doc.Difficult),
+                BorderBrush = null
             };
             t.Click += (s, a) =>
             {
@@ -87,12 +101,13 @@ namespace ESOW
             Panel.Children.Add(t);
         }
 
-        private static SolidColorBrush SelectBackgroundColor(Difficult dif)
+        private static ImageBrush SelectBackground(Difficult dif)
         {
-            return dif == Difficult.Custom ? Brushes.CornflowerBlue :
-                dif == Difficult.Easy ? Brushes.LightGreen :
-                dif == Difficult.Medium ? Brushes.LightYellow :
-                dif == Difficult.Hard ? Brushes.Orange : Brushes.IndianRed;
+            return dif == Difficult.Custom ? new ImageBrush(new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/custom.png"))) :
+                dif == Difficult.Easy ? new ImageBrush(new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/ez.png"))) :
+                dif == Difficult.Medium ? new ImageBrush(new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/med.png"))) :
+                dif == Difficult.Hard ? new ImageBrush(new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/hard.png"))) :
+                new ImageBrush(new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/uhard.png")));
         }
         //Пожалуйста, научите Рому использовать git
         private void TranslateButton(object sender, RoutedEventArgs e)
