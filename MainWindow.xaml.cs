@@ -103,11 +103,12 @@ namespace ESOW
 
         private static ImageBrush SelectBackground(Difficult dif)
         {
-            return dif == Difficult.Custom ? new ImageBrush(new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/custom.png"))) :
-                dif == Difficult.Easy ? new ImageBrush(new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/ez.png"))) :
-                dif == Difficult.Medium ? new ImageBrush(new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/med.png"))) :
-                dif == Difficult.Hard ? new ImageBrush(new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/hard.png"))) :
-                new ImageBrush(new BitmapImage(new Uri(@"pack://siteoforigin:,,,/Resources/uhard.png")));
+            return dif == Difficult.Custom ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/custom.png"))) :
+                dif == Difficult.Easy ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/ez.png"))) :
+                dif == Difficult.Medium ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/med.png"))) :
+                dif == Difficult.Hard ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/hard.png"))) :
+                new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/uhard.png")));
+
         }
         //Пожалуйста, научите Рому использовать git
         private void TranslateButton(object sender, RoutedEventArgs e)
