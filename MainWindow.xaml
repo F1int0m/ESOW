@@ -5,29 +5,42 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="ESOW" Height="500" Width="1024"
+        Title="ESOW"
         Visibility="Visible" Closing="Window_Closing"
-        Style="{DynamicResource WindowStyle}">
-    
+        Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" Background="#FFC5DCFF" Foreground="{x:Null}">
+
     <Grid>
         <TabControl Name="TabCont" TabStripPlacement="Left" Style="{DynamicResource TabStyle}" >
-            <TabItem Height="40" >
+            <TabItem Height="40"  >
                 <TabItem.Header>
-                    <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" Stretch="UniformToFill" />
+                    <Grid MinWidth="2.5 cm" MinHeight="2.5 cm">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="Resources/k.png"/>
+                        </Grid.Background>
+
+                    </Grid>
+
                 </TabItem.Header>
-                <Grid>
-
-
-
-
-
-                </Grid>
-
             </TabItem>
-            <TabItem Name="ReadyTextList" Header="Text" Height="40" >
-                <Grid>
+            <TabItem Name="ReadyTextList" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10" />
+                            <RowDefinition MinHeight="60" MaxHeight="2.5 cm" />
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Texts.png" />
+                    </Grid>
+                </TabItem.Header>
+                <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="2.5 cm"/>
                         <RowDefinition Height="300*"/>
                         <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
@@ -40,14 +53,29 @@
 
                         </StackPanel>
                     </ScrollViewer>
-                    <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" Grid.Column="1" Grid.Row="1"></Image>
+                    <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" Grid.Column="1" Grid.Row="1"/>
                     <Label Content="Select text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
 
                 </Grid>
             </TabItem>
 
-            <TabItem Name="UserTextZone" Height="40" Header="Your Text" >
-                <Grid>
+            <TabItem Name="UserTextZone" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10" />
+                            <RowDefinition MinHeight="60" MaxHeight="2.5 cm"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/CustomText.png" />
+                    </Grid>
+                </TabItem.Header>
+                <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100*"/>
                         <RowDefinition Height="50"/>
@@ -83,8 +111,23 @@
 
             </TabItem>
 
-            <TabItem Name="DictZone" Height="40"  Header="Dictionary"  MouseEnter="RefreshListbox">
-                <Grid>
+            <TabItem Name="DictZone" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" >
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10" />
+                            <RowDefinition MinHeight="60" MaxHeight="2.5 cm"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Dict.png" />
+                    </Grid>
+                </TabItem.Header>
+                <Grid Margin="10,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="600*"/>
@@ -130,7 +173,7 @@
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
 
-                        
+
 
 
                     </ListBox>
@@ -142,9 +185,9 @@
             </TabItem>
 
             <TabItem Name="WorkZone" Height="0"  Width="0"  >
-                <Grid >
+                <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="13*"/>
+                        <RowDefinition Height="2.5 cm"/>
                         <RowDefinition Height="46*"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
@@ -155,9 +198,15 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" AutoWordSelection="True" IsReadOnly="True" Style="{DynamicResource TextStyle}" >
+                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" AutoWordSelection="True" IsReadOnly="True" Style="{DynamicResource TextStyle}" BorderBrush="{x:Null}" FontFamily="Ubuntu" FontSize="14" Block.LineHeight="6" >
+                        <RichTextBox.Background>
+                            <SolidColorBrush Color="{DynamicResource mainBG}"/>
+                        </RichTextBox.Background>
+                        <RichTextBox.SelectionBrush>
+                            <SolidColorBrush Color="#FF9696FF"/>
+                        </RichTextBox.SelectionBrush>
                         <FlowDocument >
-                            <Paragraph >
+                            <Paragraph Padding="0,0,0,8">
                                 <Run Text="123"/>
                             </Paragraph>
 
@@ -172,9 +221,24 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Height="40"  Header="Settings">
-                <Grid>
-                    <RadioButton Content="Default" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True"/>
+            <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10" />
+                            <RowDefinition MinHeight="60" MaxHeight="2.5 cm"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Settings.png" />
+                    </Grid>
+                </TabItem.Header>
+                <Grid Margin="10,0,0,0">
+                    <RadioButton Content="Default" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True" Margin="0,100,0,0"/>
                     <RadioButton Content="Dark" VerticalAlignment="Center" Checked="DarkThemeChanger" />
                     <Button Height="100" Width="100" Style="{DynamicResource ButtonStyle}"></Button>
 
@@ -183,6 +247,7 @@
             </TabItem>
 
         </TabControl>
+
     </Grid>
 
 </Window>
