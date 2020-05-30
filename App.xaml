@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:ESOW"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Color x:Key="mainBG">#FFC5DCFF</Color>
+        <Color x:Key="textSelection">#FF9696FF</Color>
+
     </Application.Resources>
 </Application>

@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +65,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tests\DictTest.cs" />
     <Compile Include="Tests\TranslateTest.cs" />
     <Compile Include="Translator.cs" />
@@ -94,18 +100,13 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -113,6 +114,16 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\texts\elementary %28A2%29\Bram Stoker - Dracula.txt" />
+    <Resource Include="Resources\texts\elementary %28A2%29\Mark Twain - Curing a Cold.txt" />
+    <Resource Include="Resources\texts\elementary %28A2%29\Mark Twain - The Million Pound Bank Note.txt" />
+    <Resource Include="Resources\texts\elementary %28A2%29\Oscar Wilde - The Fisherman and His Soul.txt" />
+    <Resource Include="Resources\texts\elementary %28A2%29\Richard Curtis - Mr. Bean In Town.txt" />
+    <Resource Include="Resources\texts\intermediate %28B1%29\Edgar Allan Poe - Black Cat.txt" />
+    <Resource Include="Resources\texts\intermediate %28B1%29\George Gibson - King Arthur and His Knights.txt" />
+    <Resource Include="Resources\texts\intermediate %28B1%29\John Escott - Forrest Gump.txt" />
+    <Resource Include="Resources\texts\intermediate %28B1%29\O. Henry - Roads of Destiny.txt" />
+    <Resource Include="Resources\texts\intermediate %28B1%29\William Shakespeare - Romeo and Juliet.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -122,6 +133,51 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dict\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CustomText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dict.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Texts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\k.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\texts\advanced %28C1%29\Business_at_the_Speed_of_Thought-Bill_Gates.txt" />
+    <Resource Include="Resources\texts\advanced %28C1%29\Crime_and_Punishment-Fyodor_Dostoyevsky.txt" />
+    <Resource Include="Resources\texts\advanced %28C1%29\Fever_Dream-Ray_Bradbury.txt" />
+    <Resource Include="Resources\texts\advanced %28C1%29\Macbeth-William_Shakespeare.txt" />
+    <Resource Include="Resources\texts\advanced %28C1%29\The_Breathing_Method-Stephen_King.txt" />
+    <Resource Include="Resources\texts\upper-intermediate %28B2%29\Agatha Christie - Sparkling Cyanide.txt" />
+    <Resource Include="Resources\texts\upper-intermediate %28B2%29\Arthur Conan Doyle - The Valley of Fear.txt" />
+    <Resource Include="Resources\texts\upper-intermediate %28B2%29\Chuck Palahniuk - Fight Club.txt" />
+    <Resource Include="Resources\texts\upper-intermediate %28B2%29\Clare West - A Fishy Story.txt" />
+    <Resource Include="Resources\texts\upper-intermediate %28B2%29\Edgar Allan Poe - The pit and the pendulum.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\custom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ez.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\hard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\med.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\uhard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

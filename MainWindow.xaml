@@ -10,8 +10,10 @@
         Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" Background="#FFC5DCFF" Foreground="{x:Null}">
 
     <Grid>
-        <TabControl Name="TabCont" TabStripPlacement="Left" Style="{DynamicResource TabStyle}" >
-            <TabItem Height="40"  >
+        <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Source="Resources/logo.png" Panel.ZIndex="5"/>
+        <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" TabIndex="214748364" Panel.ZIndex="1" >
+            <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0"  >
+
                 <TabItem.Header>
                     <Grid MinWidth="2.5 cm" MinHeight="2.5 cm">
                         <Grid.Background>
@@ -148,16 +150,10 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10"  MouseEnter="CreateToolTip" Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}">
+                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip" Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}">
                                             <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}"  Text="{Binding Path=Value[0]}"  Grid.Column="10" Grid.Row="10" Margin="15,15,15,0">
 
                                             </ComboBox>
-
-                                            <TextBlock.ContextMenu>
-                                                <ContextMenu>
-                                                    <MenuItem Header="Delete" Click="DeleteWordMenuItem"></MenuItem>
-                                                </ContextMenu>
-                                            </TextBlock.ContextMenu>
 
                                         </TextBlock>
 
