@@ -197,5 +197,12 @@ namespace ESOW
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
 
         }
+
+        private void DeleteWordMenuItem(object sender, RoutedEventArgs e)
+        {
+            var word = ((dynamic) ((dynamic)sender).DataContext).Key;
+            Dictionary.Remove(word);
+            ListBox.Items.Refresh();
+        }
     }
 }

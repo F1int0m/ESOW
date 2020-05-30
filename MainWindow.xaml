@@ -11,7 +11,7 @@
     
     <Grid>
         <TabControl Name="TabCont" TabStripPlacement="Left" Style="{DynamicResource TabStyle}" >
-            <TabItem Height="40"  >
+            <TabItem Height="40" >
                 <TabItem.Header>
                     <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" Stretch="UniformToFill" />
                 </TabItem.Header>
@@ -105,10 +105,16 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip" Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}">
+                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10"  MouseEnter="CreateToolTip" Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}">
                                             <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}"  Text="{Binding Path=Value[0]}"  Grid.Column="10" Grid.Row="10" Margin="15,15,15,0">
 
                                             </ComboBox>
+
+                                            <TextBlock.ContextMenu>
+                                                <ContextMenu>
+                                                    <MenuItem Header="Delete" Click="DeleteWordMenuItem"></MenuItem>
+                                                </ContextMenu>
+                                            </TextBlock.ContextMenu>
 
                                         </TextBlock>
 
