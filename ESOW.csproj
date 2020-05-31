@@ -179,6 +179,12 @@
   <ItemGroup>
     <Resource Include="Resources\uhard.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DragAndDrop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bulldog.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

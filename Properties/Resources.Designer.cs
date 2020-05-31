@@ -63,6 +63,16 @@ namespace ESOW.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap bulldog {
+            get {
+                object obj = ResourceManager.GetObject("bulldog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap custom {
             get {
                 object obj = ResourceManager.GetObject("custom", resourceCulture);
@@ -86,6 +96,16 @@ namespace ESOW.Properties {
         public static System.Drawing.Bitmap Dict1 {
             get {
                 object obj = ResourceManager.GetObject("Dict1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap DragAndDrop {
+            get {
+                object obj = ResourceManager.GetObject("DragAndDrop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

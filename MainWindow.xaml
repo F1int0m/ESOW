@@ -12,18 +12,7 @@
     <Grid>
         <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Source="Resources/logo.png" Panel.ZIndex="5"/>
         <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" TabIndex="214748364" Panel.ZIndex="1" >
-            <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0"   >
-
-                <TabItem.Header>
-                    <Grid MinWidth="2.5 cm" MinHeight="2.5 cm">
-                        <Grid.Background>
-                            <ImageBrush ImageSource="Resources/k.png"/>
-                        </Grid.Background>
-
-                    </Grid>
-
-                </TabItem.Header>
-            </TabItem>
+            <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="-80,0,0,0" Height="2.4 cm" Width="0.1"/>
             <TabItem Name="ReadyTextList" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                 <TabItem.Header>
                     <Grid>
@@ -47,7 +36,7 @@
                         <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="180*"/>
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
                     <ScrollViewer  Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
@@ -55,7 +44,7 @@
 
                         </StackPanel>
                     </ScrollViewer>
-                    <Image Source="Resources/logo.png" Grid.Column="1" Grid.Row="1"/>
+                    <Image Source="pack://application:,,,/Resources/bulldog.png" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
                     <Label Content="Select text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
 
                 </Grid>
@@ -79,33 +68,33 @@
                 </TabItem.Header>
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100*"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="60*"/>
-                        <RowDefinition Height="82*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180*"/>
-                        <ColumnDefinition Width="103*"/>
-                        <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="119*"/>
-                        <ColumnDefinition Width="179*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" 
-                           Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" AllowDrop="True" Drop="DropEvent" >
-                    </Image>
+                    <Image Source="pack://application:,,,/Resources/DragAndDrop.png" 
+                           Grid.Row="1" Grid.Column="3" AllowDrop="True" Drop="DropEvent" Grid.RowSpan="5" />
                     <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource TextBlockStyle}">
                         Tittle
                     </TextBlock>
-                    <TextBox Name ="CustomTittle" Text="" Grid.Row="1" Grid.Column="3" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
+                    <TextBox Name ="CustomTittle" Text="" Grid.Row="2" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
 
                     <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{DynamicResource TextBlockStyle}">
                         Author
                     </TextBlock>
-                    <TextBox Name ="CustomA" Text="" Grid.Row="3" Grid.Column="3" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
-                    <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Load Custom Text" FontSize="15" Click="MakeCustomButton_OnClick" Style="{DynamicResource ButtonStyle}" ></Button>
+                    <TextBox Name ="CustomA" Text="" Grid.Row="4" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
+                    <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Load Custom Text" FontSize="15" Click="MakeCustomButton_OnClick" Style="{DynamicResource ButtonStyle}" ></Button>
 
 
                 </Grid>
