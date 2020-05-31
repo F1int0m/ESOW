@@ -96,12 +96,12 @@
                     <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" 
                            Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" AllowDrop="True" Drop="DropEvent" >
                     </Image>
-                    <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{DynamicResource TextBlockStyle}">
+                    <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource TextBlockStyle}">
                         Tittle
                     </TextBlock>
                     <TextBox Name ="CustomTittle" Text="" Grid.Row="1" Grid.Column="3" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
 
-                    <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Style="{DynamicResource TextBlockStyle}">
+                    <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{DynamicResource TextBlockStyle}">
                         Author
                     </TextBlock>
                     <TextBox Name ="CustomA" Text="" Grid.Row="3" Grid.Column="3" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
@@ -150,10 +150,15 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip" Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}">
+                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip"  Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}">
                                             <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}"  Text="{Binding Path=Value[0]}"  Grid.Column="10" Grid.Row="10" Margin="15,15,15,0">
 
                                             </ComboBox>
+                                            <TextBlock.ContextMenu>
+                                                <ContextMenu>
+                                                    <MenuItem Header="Delete" Click="DeleteWordMenuItem"/>
+                                                </ContextMenu>
+                                            </TextBlock.ContextMenu>
 
                                         </TextBlock>
 
@@ -193,7 +198,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" VerticalScrollBarVisibility="Auto" AutoWordSelection="True" IsReadOnly="True" Style="{DynamicResource TextStyle}" BorderBrush="{x:Null}" FontFamily="Ubuntu" FontSize="14" Block.LineHeight="6" >
+                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" VerticalScrollBarVisibility="Auto" AutoWordSelection="True" IsReadOnly="True" Style="{DynamicResource TextStyle}" BorderBrush="{x:Null}" FontFamily="Ubuntu"  Block.LineHeight="6" >
                         <RichTextBox.Background>
                             <SolidColorBrush Color="{DynamicResource mainBG}"/>
                         </RichTextBox.Background>
@@ -236,6 +241,8 @@
                     <RadioButton Content="Default" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True" Margin="0,100,0,0"/>
                     <RadioButton Content="Dark" VerticalAlignment="Center" Checked="DarkThemeChanger" />
                     <Button Height="100" Width="100" Style="{DynamicResource ButtonStyle}">Under construction</Button>
+                    <TextBox Name="fontSizeBox" Margin="118,222,909,428" TextChanged="FontSizeBox_OnTextChanged">20</TextBox>
+                    
 
 
                 </Grid>

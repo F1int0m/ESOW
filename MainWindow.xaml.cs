@@ -31,8 +31,6 @@ namespace ESOW
             listOfDocuments = CreateDocumentsList();
             CreateButtons(listOfDocuments);
             Dictionary.LoadDict();
-
-
             ListBox.ItemsSource = Dictionary.Dict;  
 
         }
@@ -40,53 +38,24 @@ namespace ESOW
 
         private List<Document> CreateDocumentsList()
         {
-            //var list = new List<Document>();
-            //for (int i = 1; i < 3; i++)
-            //{
-            //    list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"),  Difficult.Easy));
-            //}
-            //for (int i = 3; i < 6; i++)
-            //{
-            //    list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.Medium));
-            //}
-            //for (int i = 6; i < 9; i++)
-            //{
-            //    list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.Hard));
-            //}
-            //for (int i = 9; i < 12; i++)
-            //{
-            //    list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.UHard));
-            //}
-            //return list;
-
             return Directory.GetDirectories("../../Resources/texts").SelectMany(x => Directory.EnumerateFiles(x).Select(
                     z =>
                     {
                         var difficult = x.Contains("A2") ? Difficult.Easy :
                             x.Contains("B1") ? Difficult.Medium :
                             x.Contains("B2") ? Difficult.Hard : Difficult.UHard;
+                        var tittle = z.Split('\\').Last().Replace(".txt", "");
                         using (StreamReader sr = new StreamReader(z))
                         {
-                            return new Document(z.Split('\\').Last(), sr.ReadToEnd(), "none", difficult);
+                            var wCount = int.TryParse(sr.ReadLine(), out var c) ? c : 0;
+                            return new Document(tittle, sr.ReadToEnd(), "none", difficult, wCount);
                         }
                     }))
                 .ToList();
-
-
         }
+        
 
-        private static string Sbld(int i, string str)
-        {
-            var c = new StringBuilder();
-            for (int j = 0; j < i; j++)
-            {
-                c.AppendLine(str +" "+ i);
-            }
-            
-            return c.ToString();
-        }
-
-        private void CreateButtons(List<Document> d)
+        private void CreateButtons(IEnumerable<Document> d)
         {
             foreach (var doc in d.OrderBy(x=>x.Difficult))
             {
@@ -98,7 +67,7 @@ namespace ESOW
         {
             var t = new Button
             {
-                Content = isOurText ? doc.Title : "(*)" + doc.Title,
+                Content = (isOurText ? doc.Title : "(*)" + doc.Title) + " ("+doc.WordsCount+")",
                 Height = 60,
                 Background = SelectBackground(doc.Difficult),
                 BorderBrush = null
@@ -125,7 +94,6 @@ namespace ESOW
                 new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/uhard.png")));
 
         }
-        //Пожалуйста, научите Рому использовать git
         private void TranslateButton(object sender, RoutedEventArgs e)
         {
             ResBox.Document.Blocks.Clear();
@@ -167,7 +135,7 @@ namespace ESOW
             {
                 return;
             }
-            var temp = new Document(CustomA.Text+"\n"+ CustomTittle.Text,LoadedFile,"",Difficult.Custom);
+            var temp = new Document(CustomA.Text+"\n"+ CustomTittle.Text,LoadedFile,"",Difficult.Custom,LoadedFile.Split(' ').Length-1);
             CurrentDocument = temp;
             WorkTittle.Content = CurrentDocument.Title;
             TempBut.Visibility = Visibility.Hidden;
@@ -191,30 +159,18 @@ namespace ESOW
         private void CreateToolTip(object sender, MouseEventArgs e)
         {
             var bb = sender as TextBlock;
-            var  tt  = new ToolTip();
-            tt.Content = Dictionary.GetTranscription(bb.Text);
+            var tt = new ToolTip {Content = Dictionary.GetTranscription(bb.Text)};
             bb.ToolTip = tt;
-
         }
-
 
         
-
-        private void RefreshListbox(object sender, MouseEventArgs e)
-        {
-           ListBox.Items.Refresh();
-        }
 
         private void DarkThemeChanger(object sender, RoutedEventArgs e)
         {
             string style = "DarkTheme";
-            // определяем путь к файлу ресурсов
             var uri = new Uri(style + ".xaml", UriKind.Relative);
-            // загружаем словарь ресурсов
             ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-            // очищаем коллекцию ресурсов приложения
             Application.Current.Resources.Clear();
-            // добавляем загруженный словарь ресурсов
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
 
         }
@@ -226,7 +182,6 @@ namespace ESOW
             ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
             Application.Current.Resources.Clear();
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
-
         }
 
         private void DeleteWordMenuItem(object sender, RoutedEventArgs e)
@@ -234,6 +189,15 @@ namespace ESOW
             var word = ((dynamic) ((dynamic)sender).DataContext).Key;
             Dictionary.Remove(word);
             ListBox.Items.Refresh();
+        }
+
+        private void FontSizeBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (int.TryParse(fontSizeBox.Text,out var size))
+            {
+                size = size < 15 ? 15 : size > 40 ?40:size;
+            }
+            FontSize = size>0?size:15;
         }
     }
 }
