@@ -86,7 +86,9 @@ namespace ESOW
                 Content = isOurText ? doc.Title : "(*)" + doc.Title,
                 Height = 60,
                 Background = SelectBackground(doc.Difficult),
-                BorderBrush = null
+                BorderBrush = null,
+                FontSize = 24,
+                FontFamily = new System.Windows.Media.FontFamily("Ubuntu")
             };
             t.Click += (s, a) =>
             {

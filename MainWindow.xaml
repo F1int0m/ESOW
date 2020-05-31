@@ -8,23 +8,30 @@
         Title="ESOW"
         Visibility="Visible" Closing="Window_Closing"
         Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" Background="#FFC5DCFF" Foreground="{x:Null}">
-
+    <Window.Resources>
+        <ControlTemplate TargetType="TabItem" x:Key="tabButt">
+            <Border>
+                <Border.Background>
+                    <SolidColorBrush x:Name="Bruh" Color="Transparent"/>
+                </Border.Background>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup Name="States">
+                        <VisualState Name="MouseOver">
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="Bruh" Storyboard.TargetProperty="Color" To="#02C5DCFF"/>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
         <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Source="Resources/logo.png" Panel.ZIndex="5"/>
         <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" TabIndex="214748364" Panel.ZIndex="1" >
-            <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0"  >
+            <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="0.1" Height="2.4 cm" Margin="-50,-2,0,-2"/>
 
-                <TabItem.Header>
-                    <Grid MinWidth="2.5 cm" MinHeight="2.5 cm">
-                        <Grid.Background>
-                            <ImageBrush ImageSource="Resources/k.png"/>
-                        </Grid.Background>
-
-                    </Grid>
-
-                </TabItem.Header>
-            </TabItem>
-            <TabItem Name="ReadyTextList" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <TabItem Name="ReadyTextList" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0">
                 <TabItem.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -33,11 +40,12 @@
                             <ColumnDefinition Width="10"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="10" />
+                            <RowDefinition Height="15" />
                             <RowDefinition MinHeight="60" MaxHeight="2.5 cm" />
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Texts.png" />
+                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Texts.png" Panel.ZIndex="5" />
+                        <Image Grid.RowSpan="3" Grid.ColumnSpan="3" Source="Resources/k.png" Stretch="Fill" Panel.ZIndex="1" />
                     </Grid>
                 </TabItem.Header>
                 <Grid Margin="10,0,0,0">
@@ -61,7 +69,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Name="UserTextZone" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+            <TabItem Name="UserTextZone" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0">
                 <TabItem.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -74,7 +82,8 @@
                             <RowDefinition MinHeight="60" MaxHeight="2.5 cm"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/CustomText.png" />
+                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/CustomText.png" Panel.ZIndex="5" />
+                        <Image Grid.RowSpan="3" Grid.ColumnSpan="3" Source="Resources/k.png" Stretch="Fill" Panel.ZIndex="1" />
                     </Grid>
                 </TabItem.Header>
                 <Grid Margin="10,0,0,0">
@@ -113,8 +122,8 @@
 
             </TabItem>
 
-            <TabItem Name="DictZone" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" >
-                <TabItem.Header>
+            <TabItem Name="DictZone" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0">
+                <TabItem.Header >
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10"/>
@@ -126,7 +135,8 @@
                             <RowDefinition MinHeight="60" MaxHeight="2.5 cm"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Dict.png" />
+                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Dict.png" Panel.ZIndex="5" />
+                        <Image Grid.RowSpan="3" Grid.ColumnSpan="3" Source="Resources/k.png" Stretch="Fill" Panel.ZIndex="1" />
                     </Grid>
                 </TabItem.Header>
                 <Grid Margin="10,0,0,0">
@@ -217,7 +227,7 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0">
                 <TabItem.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -230,7 +240,8 @@
                             <RowDefinition MinHeight="60" MaxHeight="2.5 cm"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Settings.png" />
+                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Settings.png" Panel.ZIndex="5" />
+                        <Image Grid.RowSpan="3" Grid.ColumnSpan="3" Source="Resources/k.png" Stretch="Fill" Panel.ZIndex="1" />
                     </Grid>
                 </TabItem.Header>
                 <Grid Margin="10,0,0,0">
