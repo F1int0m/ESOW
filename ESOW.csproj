@@ -185,6 +185,12 @@
   <ItemGroup>
     <Resource Include="Resources\bulldog.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\texts\elementary %28A2%29\%28R%29Mark Twain - The Million Pound Bank Note.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\texts\intermediate %28B1%29\%28R%29Edgar Allan Poe - Black Cat.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
