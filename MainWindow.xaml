@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ESOW"
         Visibility="Visible" Closing="Window_Closing"
-        Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" >
+        Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" WindowStartupLocation="CenterScreen" Icon="Resources/icon.png" >
     <Grid>
         <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Source="Resources/logo.png" Panel.ZIndex="5"/>
         <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" TabIndex="214748364" Panel.ZIndex="1" >
@@ -91,7 +91,7 @@
                     <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Load Custom Text" FontSize="15" Click="MakeCustomButton_OnClick" Style="{DynamicResource ButtonStyle}" ></Button>
                 </Grid>
             </TabItem>
-            <TabItem Name="DictZone" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" >
+            <TabItem Name="DictZone" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" MouseEnter="RefreshListbox">
                 <TabItem.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>

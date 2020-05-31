@@ -44,11 +44,11 @@ namespace ESOW
                         var difficult = x.Contains("A2") ? Difficult.Easy :
                             x.Contains("B1") ? Difficult.Medium :
                             x.Contains("B2") ? Difficult.Hard : Difficult.UHard;
-                        var tittle = z.Split('\\').Last().Replace(".txt", "");
+                        var title = z.Split('\\').Last().Replace(".txt", "");
                         using (StreamReader sr = new StreamReader(z))
                         {
                             var wCount = int.TryParse(sr.ReadLine(), out var c) ? c : 0;
-                            return new Document(tittle, sr.ReadToEnd(), "none", difficult, wCount);
+                            return new Document(title, sr.ReadToEnd(), "none", difficult, wCount);
                         }
                     }))
                 .ToList();
@@ -200,6 +200,11 @@ namespace ESOW
                 size = size < 15 ? 15 : size > 40 ?40:size;
             }
             FontSize = size>0?size:15;
+        }
+
+        private void RefreshListbox(object sender, MouseEventArgs e)
+        {
+            ListBox.Items.Refresh();
         }
     }
 }
