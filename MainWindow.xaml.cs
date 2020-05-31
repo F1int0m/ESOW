@@ -40,24 +40,39 @@ namespace ESOW
 
         private List<Document> CreateDocumentsList()
         {
-            var list = new List<Document>();
-            for (int i = 0; i < 3; i++)
-            {
-                list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"),  Difficult.Easy));
-            }
-            for (int i = 3; i < 6; i++)
-            {
-                list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.Medium));
-            }
-            for (int i = 6; i < 9; i++)
-            {
-                list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.Hard));
-            }
-            for (int i = 9; i < 12; i++)
-            {
-                list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.UHard));
-            }
-            return list;
+            //var list = new List<Document>();
+            //for (int i = 1; i < 3; i++)
+            //{
+            //    list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"),  Difficult.Easy));
+            //}
+            //for (int i = 3; i < 6; i++)
+            //{
+            //    list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.Medium));
+            //}
+            //for (int i = 6; i < 9; i++)
+            //{
+            //    list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.Hard));
+            //}
+            //for (int i = 9; i < 12; i++)
+            //{
+            //    list.Add(new Document("tittle" + i, Sbld(i, "content"), Sbld(i, "переведно"), Difficult.UHard));
+            //}
+            //return list;
+
+            return Directory.GetDirectories("../../Resources/texts").SelectMany(x => Directory.EnumerateFiles(x).Select(
+                    z =>
+                    {
+                        var difficult = x.Contains("A2") ? Difficult.Easy :
+                            x.Contains("B1") ? Difficult.Medium :
+                            x.Contains("B2") ? Difficult.Hard : Difficult.UHard;
+                        using (StreamReader sr = new StreamReader(z))
+                        {
+                            return new Document(z.Split('\\').Last(), sr.ReadToEnd(), "none", difficult);
+                        }
+                    }))
+                .ToList();
+
+
         }
 
         private static string Sbld(int i, string str)

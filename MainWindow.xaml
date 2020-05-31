@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="ESOW"
         Visibility="Visible" Closing="Window_Closing"
-        Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" Background="#FFC5DCFF" Foreground="{x:Null}">
+        Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" >
 
     <Grid>
         <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Source="Resources/logo.png" Panel.ZIndex="5"/>
         <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" TabIndex="214748364" Panel.ZIndex="1" >
-            <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0"  >
+            <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0"   >
 
                 <TabItem.Header>
                     <Grid MinWidth="2.5 cm" MinHeight="2.5 cm">
@@ -55,7 +55,7 @@
 
                         </StackPanel>
                     </ScrollViewer>
-                    <Image Source="kisspng-bongo-cat-pixel-art-bongo-cat-pixel-art-bongo-drum-5ca995811bf5d0.6900605915546177291145.png" Grid.Column="1" Grid.Row="1"/>
+                    <Image Source="Resources/logo.png" Grid.Column="1" Grid.Row="1"/>
                     <Label Content="Select text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
 
                 </Grid>
@@ -173,7 +173,6 @@
 
 
                     </ListBox>
-                    <Button Content="Button" Grid.Column="1"  Width="100" Height="50"  Style="{DynamicResource ButtonStyle}"/>
 
 
 
@@ -194,7 +193,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" AutoWordSelection="True" IsReadOnly="True" Style="{DynamicResource TextStyle}" BorderBrush="{x:Null}" FontFamily="Ubuntu" FontSize="14" Block.LineHeight="6" >
+                    <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" VerticalScrollBarVisibility="Auto" AutoWordSelection="True" IsReadOnly="True" Style="{DynamicResource TextStyle}" BorderBrush="{x:Null}" FontFamily="Ubuntu" FontSize="14" Block.LineHeight="6" >
                         <RichTextBox.Background>
                             <SolidColorBrush Color="{DynamicResource mainBG}"/>
                         </RichTextBox.Background>
@@ -236,7 +235,7 @@
                 <Grid Margin="10,0,0,0">
                     <RadioButton Content="Default" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True" Margin="0,100,0,0"/>
                     <RadioButton Content="Dark" VerticalAlignment="Center" Checked="DarkThemeChanger" />
-                    <Button Height="100" Width="100" Style="{DynamicResource ButtonStyle}"></Button>
+                    <Button Height="100" Width="100" Style="{DynamicResource ButtonStyle}">Under construction</Button>
 
 
                 </Grid>

@@ -13,6 +13,11 @@ namespace ESOW
         public string Content { get; private set; }
         public string TranslatedContent { get; private set; }
 
+        public override string ToString()
+        {
+            return Title;
+        }
+
         public Document(string title, string content, string translate, Difficult diff)
         {
             Title = title;
