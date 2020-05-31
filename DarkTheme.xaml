@@ -19,6 +19,7 @@
 
     <Style x:Key="WindowStyle" TargetType="Window">
         <Setter Property="Background" Value="DarkGray" />
+        <Setter Property="Foreground" Value="{x:Null}" />
     </Style>
 
 
