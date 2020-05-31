@@ -8,11 +8,10 @@
         Title="ESOW"
         Visibility="Visible" Closing="Window_Closing"
         Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" >
-
     <Grid>
         <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Source="Resources/logo.png" Panel.ZIndex="5"/>
         <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" TabIndex="214748364" Panel.ZIndex="1" >
-            <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="-80,0,0,0" Height="2.4 cm" Width="0.1"/>
+            <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="-80,0,0,0" Height="2.4 cm" Width="0.1" />
             <TabItem Name="ReadyTextList" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                 <TabItem.Header>
                     <Grid>
@@ -40,16 +39,12 @@
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
                     <ScrollViewer  Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
-                        <StackPanel Name="Panel" >
-
-                        </StackPanel>
+                        <StackPanel Name="Panel" />
                     </ScrollViewer>
                     <Image Source="pack://application:,,,/Resources/bulldog.png" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
                     <Label Content="Select text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
-
                 </Grid>
             </TabItem>
-
             <TabItem Name="UserTextZone" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" >
                 <TabItem.Header>
                     <Grid>
@@ -89,19 +84,13 @@
                         Tittle
                     </TextBlock>
                     <TextBox Name ="CustomTittle" Text="" Grid.Row="2" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
-
                     <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{DynamicResource TextBlockStyle}">
                         Author
                     </TextBlock>
                     <TextBox Name ="CustomA" Text="" Grid.Row="4" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
                     <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Load Custom Text" FontSize="15" Click="MakeCustomButton_OnClick" Style="{DynamicResource ButtonStyle}" ></Button>
-
-
                 </Grid>
-
-
             </TabItem>
-
             <TabItem Name="DictZone" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" >
                 <TabItem.Header>
                     <Grid>
@@ -138,22 +127,15 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-
                                         <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip"  Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}">
-                                            <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}"  Text="{Binding Path=Value[0]}"  Grid.Column="10" Grid.Row="10" Margin="15,15,15,0">
-
-                                            </ComboBox>
+                                            <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}"  Text="{Binding Path=Value[0]}"  Grid.Column="10" Grid.Row="10" Margin="15,15,15,0"/>
                                             <TextBlock.ContextMenu>
                                                 <ContextMenu>
                                                     <MenuItem Header="Delete" Click="DeleteWordMenuItem"/>
                                                 </ContextMenu>
                                             </TextBlock.ContextMenu>
-
                                         </TextBlock>
-
-
                                     </Grid>
-
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -162,17 +144,9 @@
                                 <WrapPanel Orientation="Vertical"/>
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
-
-
-
-
                     </ListBox>
-
-
-
                 </Grid>
             </TabItem>
-
             <TabItem Name="WorkZone" Height="0"  Width="0"  >
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
@@ -186,7 +160,6 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-
                     <RichTextBox Name="WorkBox"  Grid.Row="1" Grid.RowSpan="4" Margin="5,0,5,5" VerticalScrollBarVisibility="Auto" AutoWordSelection="True" IsReadOnly="True" Style="{DynamicResource TextStyle}" BorderBrush="{x:Null}" FontFamily="Ubuntu"  Block.LineHeight="6" >
                         <RichTextBox.Background>
                             <SolidColorBrush Color="{DynamicResource mainBG}"/>
@@ -198,7 +171,6 @@
                             <Paragraph Padding="0,0,0,8">
                                 <Run Text="123"/>
                             </Paragraph>
-
                         </FlowDocument>
                     </RichTextBox>
                     <Button Content="Translate" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15" Click="TranslateButton" Style="{DynamicResource ButtonStyle}"></Button>
@@ -206,9 +178,7 @@
                     <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  />
                     <Button Content="ShowTranslate" Grid.Row="4" Grid.Column="1" Margin="10" Name="TempBut" Click="ShowTranslateButton" Style="{DynamicResource ButtonStyle}" ></Button>
                     <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15" Content="Add to dictionary" Click="AddToDict_OnClick" Style="{DynamicResource ButtonStyle}"></Button>
-
                 </Grid>
-
             </TabItem>
             <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                 <TabItem.Header>
@@ -229,18 +199,10 @@
                 <Grid Margin="10,0,0,0">
                     <RadioButton Content="Default" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True" Margin="0,100,0,0"/>
                     <RadioButton Content="Dark" VerticalAlignment="Center" Checked="DarkThemeChanger" />
-                    <Button Height="100" Width="100" Style="{DynamicResource ButtonStyle}">Under construction</Button>
+                    <Button Height="100" Width="200" Style="{DynamicResource ButtonStyle}">Under construction</Button>
                     <TextBox Name="fontSizeBox" Margin="118,222,909,428" TextChanged="FontSizeBox_OnTextChanged">20</TextBox>
-                    
-
-
                 </Grid>
             </TabItem>
-
         </TabControl>
-
     </Grid>
-
 </Window>
-
-

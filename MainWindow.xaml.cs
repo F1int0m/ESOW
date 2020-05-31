@@ -31,8 +31,8 @@ namespace ESOW
             listOfDocuments = CreateDocumentsList();
             CreateButtons(listOfDocuments);
             Dictionary.LoadDict();
-            ListBox.ItemsSource = Dictionary.Dict;  
-
+            ListBox.ItemsSource = Dictionary.Dict;
+            this.TabCont.SelectedIndex = 1;
         }
 
 
