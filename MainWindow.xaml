@@ -128,14 +128,14 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip"  Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}">
-                                            <TextBlock.ContextMenu>
-                                                <ContextMenu >
-                                                    <MenuItem  Header="Delete" Click="DeleteWordMenuItem"/>
-                                                </ContextMenu>
-                                            </TextBlock.ContextMenu>                                            
                                             <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}"  Text="{Binding Path=Value[0]}"  Grid.Column="10" Grid.Row="10" Margin="15,15,15,0"/>
                                         </TextBlock>
                                     </Grid>
+                                    <StackPanel.ContextMenu>
+                                        <ContextMenu >
+                                            <MenuItem  Header="Delete" Click="DeleteWordMenuItem"/>
+                                        </ContextMenu>
+                                    </StackPanel.ContextMenu>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
