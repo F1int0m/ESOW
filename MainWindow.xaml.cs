@@ -20,6 +20,7 @@ namespace ESOW
         public Document CurrentDocument;
         private string LoadedFile;
         private bool IsTranslate = false;
+        private List<Document> documentList;
         private Translator Translator = new Translator();
         private DictWithTranslate Dictionary = new DictWithTranslate();
         private string GetLang() => IsTranslate ? "ru-en" : "en-ru";
@@ -28,10 +29,19 @@ namespace ESOW
         public MainWindow()
         {
             InitializeComponent();
-            CreateButtons(CreateDocumentsList());
+            documentList = CreateDocumentsList();
+            CreateButtons(documentList);
+            InitialezeOrderBox();
             Dictionary.LoadDict();
             ListBox.ItemsSource = Dictionary.Dict;
             this.TabCont.SelectedIndex = 1;
+        }
+
+        private void InitialezeOrderBox()
+        {
+            var list = new List<string>{"Order by difficult(>)","Order byy difficult(<)","Order by length(>)", "Order by length(<)" };//new Dictionary<string, string> {["123"] = "WordsCount",["234"] = "Difficult"};
+            OrderBox.ItemsSource = list;
+            OrderBox.SelectedIndex = 0;
         }
 
 
@@ -61,7 +71,7 @@ namespace ESOW
                         using (StreamReader sr = new StreamReader(z))
                         {
                             var text = sr.ReadToEnd();
-                            return new Document(title, text, translate ?? "none", difficult, text.Split(' ').Length);
+                            return new Document(title, text, translate ?? "none", difficult, text.Split(' ').Length,true);
                         }
                     }))
                 .ToList();
@@ -72,15 +82,36 @@ namespace ESOW
         {
             foreach (var doc in d.OrderBy(x=>x.Difficult))
             {
-                CreateButton(doc, true);
+                CreateButton(doc);
             }
         }
 
-        private void CreateButton(Document doc, bool isOurText)
+
+        private void ReorderButton(object sender, RoutedEventArgs e)
+        {
+            Panel.Children.Clear();
+            var type = typeof(Document);
+            var c = type.GetProperty(OrderBox.SelectedIndex <= 1 ? "Difficult" : "WordsCount");
+            if (OrderBox.SelectedIndex % 2 == 0)
+            {
+                foreach (var tDocument in documentList.OrderBy(z => c))
+                {
+                    CreateButton(tDocument);
+                }
+                return;
+            }
+            foreach (var tDocument in documentList.OrderByDescending(z => c))
+            {
+                CreateButton(tDocument);
+            }
+
+        }
+
+        private void CreateButton(Document doc)
         {
             var t = new Button
             {
-                Content = (isOurText ? doc.Title : "(*)" + doc.Title) + " ("+doc.WordsCount+")",
+                Content = (doc.IsOurText ? doc.Title : "(*)" + doc.Title) + " ("+doc.WordsCount+")",
                 Height = 60,
                 Background = SelectBackground(doc.Difficult),
                 BorderBrush = null,
@@ -95,7 +126,7 @@ namespace ESOW
                 WorkTittle.Content = CurrentDocument.Title;
                 WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
                 TabCont.SelectedIndex += 3;
-                TempBut.Visibility = isOurText ? Visibility.Visible : Visibility.Hidden;
+                TempBut.Visibility = doc.IsOurText ? Visibility.Visible : Visibility.Hidden;
             };
             Panel.Children.Add(t);
         }
@@ -152,15 +183,18 @@ namespace ESOW
             {
                 return;
             }
-            var temp = new Document(CustomA.Text+"\n"+ CustomTittle.Text,LoadedFile,"",Difficult.Custom,LoadedFile.Split(' ').Length-1);
+
+            var temp = new Document(CustomA.Text + " " + CustomTittle.Text, LoadedFile, "", Difficult.Custom,
+                LoadedFile?.Split(' ').Length ?? 0, false);
             CurrentDocument = temp;
             WorkTittle.Content = CurrentDocument.Title;
-            TempBut.Visibility = Visibility.Hidden;
-            WorkBox.Document.Blocks.Clear();
+            WorkBox.Document.Blocks.Clear(); 
             ResBox.Document.Blocks.Clear();
             WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
+            TempBut.Visibility = Visibility.Hidden;
             TabCont.SelectedIndex += 2;
-            CreateButton(temp,false);
+            documentList.Add(temp);
+            CreateButton(temp);
         }
 
         private void AddToDict_OnClick(object sender, RoutedEventArgs e)
