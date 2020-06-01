@@ -173,11 +173,11 @@
                             </Paragraph>
                         </FlowDocument>
                     </RichTextBox>
-                    <Button Content="Translate" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15" Click="TranslateButton" Style="{DynamicResource ButtonStyle}"></Button>
+                    <Button Content="Translate" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15,5" Click="TranslateButton" Style="{DynamicResource ButtonStyle}"></Button>
                     <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="10,0" Style="{DynamicResource TextStyle}" />
                     <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                    <Button Content="ShowTranslate" Grid.Row="4" Grid.Column="1" Margin="10" Name="TempBut" Click="ShowTranslateButton" Style="{DynamicResource ButtonStyle}" ></Button>
-                    <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15" Content="Add to dictionary" Click="AddToDict_OnClick" Style="{DynamicResource ButtonStyle}"></Button>
+                    <Button Content="ShowTranslate" Grid.Row="4" Grid.Column="1" Margin="10,5" Name="TempBut" Click="ShowTranslateButton" Style="{DynamicResource ButtonStyle}" ></Button>
+                    <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15,5" Content="Add to dictionary" Click="AddToDict_OnClick" Style="{DynamicResource ButtonStyle}"></Button>
                 </Grid>
             </TabItem>
             <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
@@ -198,9 +198,9 @@
                 </TabItem.Header>
                 <Grid Margin="10,0,0,0">
                     <RadioButton Content="Default" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True" Margin="0,100,0,0"/>
-                    <RadioButton Content="Dark" VerticalAlignment="Center" Checked="DarkThemeChanger" />
+                    <RadioButton Content="Dark" VerticalAlignment="Top" Checked="DarkThemeChanger" Margin="0,150,0,0" />
                     <Button Height="100" Width="200" Style="{DynamicResource ButtonStyle}">Under construction</Button>
-                    <TextBox Name="fontSizeBox" Margin="118,222,909,428" TextChanged="FontSizeBox_OnTextChanged">20</TextBox>
+                    <TextBox Name="fontSizeBox" Margin="10,200,0,0" TextChanged="FontSizeBox_OnTextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="50">20</TextBox>
                 </Grid>
             </TabItem>
         </TabControl>
