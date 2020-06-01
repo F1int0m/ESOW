@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -133,6 +136,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dict\" />
+    <Folder Include="Resources\texts\elementary %28A2%29\Translate\" />
+    <Folder Include="Resources\texts\intermediate %28B1%29\Translate\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\CustomText.png" />
@@ -178,6 +183,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\uhard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DragAndDrop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bulldog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

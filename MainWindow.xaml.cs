@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -19,58 +20,94 @@ namespace ESOW
         public Document CurrentDocument;
         private string LoadedFile;
         private bool IsTranslate = false;
+        private List<Document> documentList;
         private Translator Translator = new Translator();
-        private List<Document> listOfDocuments;
         private DictWithTranslate Dictionary = new DictWithTranslate();
+        private List<Difficult> SelecteDifficults = new List<Difficult>();
         private string GetLang() => IsTranslate ? "ru-en" : "en-ru";
 
 
         public MainWindow()
         {
+            documentList = CreateDocumentsList();
             InitializeComponent();
-            listOfDocuments = CreateDocumentsList();
-            CreateButtons(listOfDocuments);
+            UpdateTextsButtons(documentList);
+            InitializeOrderBox();
             Dictionary.LoadDict();
-            ListBox.ItemsSource = Dictionary.Dict;  
+            ListBox.ItemsSource = Dictionary.Dict;
+            this.TabCont.SelectedIndex = 1;
+        }
 
+        private void InitializeOrderBox()
+        {
+            var list = new List<string>{"Order by difficult(>)","Order byy difficult(<)","Order by length(>)", "Order by length(<)" };
+            OrderBox.ItemsSource = list;
+            OrderBox.SelectedIndex = 0;
         }
 
 
         private List<Document> CreateDocumentsList()
         {
+            
             return Directory.GetDirectories("../../Resources/texts").SelectMany(x => Directory.EnumerateFiles(x).Select(
                     z =>
                     {
-                        var difficult = x.Contains("A2") ? Difficult.Easy :
-                            x.Contains("B1") ? Difficult.Medium :
-                            x.Contains("B2") ? Difficult.Hard : Difficult.UHard;
-                        var tittle = z.Split('\\').Last().Replace(".txt", "");
+                        var difficult = x.Contains("A2") ? Difficult.A2 :
+                            x.Contains("B1") ? Difficult.B1 :
+                            x.Contains("B2") ? Difficult.B2 : Difficult.C1;
+                        var title = z.Split('\\').Last().Replace(".txt", "");
+                        var translate = Directory.GetDirectories(x).Select(r =>
+                        {
+                            var endpath = Directory.EnumerateFiles(r).FirstOrDefault(g => g.Contains(title));
+                            if (endpath==null)
+                            {
+                                return null;
+                            }
+                            using (var sr = new StreamReader(endpath))
+                            {
+                                return sr.ReadToEnd();
+                            }
+                        }).FirstOrDefault();
+
                         using (StreamReader sr = new StreamReader(z))
                         {
-                            var wCount = int.TryParse(sr.ReadLine(), out var c) ? c : 0;
-                            return new Document(tittle, sr.ReadToEnd(), "none", difficult, wCount);
+                            var text = sr.ReadToEnd();
+                            return new Document(title, text, translate ?? "none", difficult, text.Split(' ').Length,true);
                         }
                     }))
                 .ToList();
         }
         
 
-        private void CreateButtons(IEnumerable<Document> d)
+        private void UpdateTextsButtons(IEnumerable<Document> d)
         {
-            foreach (var doc in d.OrderBy(x=>x.Difficult))
+            Panel.Children.Clear();
+            foreach (var doc in d.Where(x=>SelecteDifficults.Contains(x.Difficult)))
             {
-                CreateButton(doc, true);
+                CreateButton(doc);
             }
         }
 
-        private void CreateButton(Document doc, bool isOurText)
+
+        private void ReorderButton(object sender, RoutedEventArgs e)
+        {
+            
+            var type = typeof(Document);
+            var c = type.GetProperty(OrderBox.SelectedIndex <= 1 ? "Difficult" : "WordsCount");
+            documentList = OrderBox.SelectedIndex % 2 == 0 ? documentList.OrderBy(z => c?.GetValue(z)).ToList() : documentList.OrderByDescending(z => c?.GetValue(z)).ToList();
+            UpdateTextsButtons(documentList);
+        }
+
+        private void CreateButton(Document doc)
         {
             var t = new Button
             {
-                Content = (isOurText ? doc.Title : "(*)" + doc.Title) + " ("+doc.WordsCount+")",
+                Content = (doc.IsOurText ? doc.Title : "(*)" + doc.Title) + " ("+doc.WordsCount+")",
                 Height = 60,
                 Background = SelectBackground(doc.Difficult),
-                BorderBrush = null
+                BorderBrush = null,
+                FontSize = 24,
+                FontFamily = new System.Windows.Media.FontFamily("Ubuntu")
             };
             t.Click += (s, a) =>
             {
@@ -80,7 +117,7 @@ namespace ESOW
                 WorkTittle.Content = CurrentDocument.Title;
                 WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
                 TabCont.SelectedIndex += 3;
-                TempBut.Visibility = isOurText ? Visibility.Visible : Visibility.Hidden;
+                TempBut.Visibility = doc.IsOurText ? Visibility.Visible : Visibility.Hidden;
             };
             Panel.Children.Add(t);
         }
@@ -88,12 +125,14 @@ namespace ESOW
         private static ImageBrush SelectBackground(Difficult dif)
         {
             return dif == Difficult.Custom ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/custom.png"))) :
-                dif == Difficult.Easy ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/ez.png"))) :
-                dif == Difficult.Medium ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/med.png"))) :
-                dif == Difficult.Hard ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/hard.png"))) :
+                dif == Difficult.A2 ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/ez.png"))) :
+                dif == Difficult.B1 ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/med.png"))) :
+                dif == Difficult.B2 ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/hard.png"))) :
                 new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/uhard.png")));
 
         }
+
+        //Пожалуйста, научите Рому использовать git
         private void TranslateButton(object sender, RoutedEventArgs e)
         {
             ResBox.Document.Blocks.Clear();
@@ -135,15 +174,18 @@ namespace ESOW
             {
                 return;
             }
-            var temp = new Document(CustomA.Text+"\n"+ CustomTittle.Text,LoadedFile,"",Difficult.Custom,LoadedFile.Split(' ').Length-1);
+
+            var temp = new Document(CustomA.Text + " " + CustomTittle.Text, LoadedFile, "", Difficult.Custom,
+                LoadedFile?.Split(' ').Length ?? 0, false);
             CurrentDocument = temp;
             WorkTittle.Content = CurrentDocument.Title;
-            TempBut.Visibility = Visibility.Hidden;
-            WorkBox.Document.Blocks.Clear();
+            WorkBox.Document.Blocks.Clear(); 
             ResBox.Document.Blocks.Clear();
             WorkBox.Document.Blocks.Add(new Paragraph(new Run(CurrentDocument.Content)));
+            TempBut.Visibility = Visibility.Hidden;
             TabCont.SelectedIndex += 2;
-            CreateButton(temp,false);
+            documentList.Add(temp);
+            CreateButton(temp);
         }
 
         private void AddToDict_OnClick(object sender, RoutedEventArgs e)
@@ -186,8 +228,8 @@ namespace ESOW
 
         private void DeleteWordMenuItem(object sender, RoutedEventArgs e)
         {
-            var word = ((dynamic) ((dynamic)sender).DataContext).Key;
-            Dictionary.Remove(word);
+            var word = (KeyValuePair<string,List<string>>) ListBox.SelectedItem;
+            Dictionary.Remove(word.Key);
             ListBox.Items.Refresh();
         }
 
@@ -198,6 +240,40 @@ namespace ESOW
                 size = size < 15 ? 15 : size > 40 ?40:size;
             }
             FontSize = size>0?size:15;
+        }
+
+        private void RefreshListbox(object sender, MouseEventArgs e)
+        {
+            ListBox.Items.Refresh();
+        }
+
+        private void AddDifficult(object sender, RoutedEventArgs e)
+        {
+            var box = sender as CheckBox;
+            Enum.TryParse(box.Name, out Difficult dif);
+            if (dif!=default)
+            {
+                SelecteDifficults.Add(dif);
+            }
+            UpdateTextsButtons(documentList);
+        }
+
+        private void RemoveDifficult(object sender, RoutedEventArgs e)
+        {
+            var box = sender as CheckBox;
+            Enum.TryParse(box.Name, out Difficult dif);
+            if (dif != default)
+            {
+                try
+                {
+                    SelecteDifficults.Remove(dif);
+                }
+                catch (Exception exception)
+                {
+                    //ignore
+                }
+            }
+            UpdateTextsButtons(documentList);
         }
     }
 }

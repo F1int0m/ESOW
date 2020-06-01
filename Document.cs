@@ -12,7 +12,7 @@ namespace ESOW
         public Difficult Difficult { get; set; }
         public string Content { get; private set; }
         public string TranslatedContent { get; private set; }
-
+        public bool IsOurText { get; private set; }
         public int WordsCount { get; private set; }
 
         public override string ToString()
@@ -20,23 +20,25 @@ namespace ESOW
             return Title;
         }
 
-        public Document(string title, string content, string translate, Difficult diff, int wordsCount)
+        public Document(string title, string content, string translate, Difficult diff, int wordsCount, bool isOurText)
         {
             Title = title;
             Content = content;
             TranslatedContent = translate;
             Difficult = diff;
             WordsCount = wordsCount;
+            IsOurText = isOurText;
         }
     }
 
 
     public enum Difficult  
     {
+        Default,
         Custom,
-        Easy,
-        Medium,
-        Hard,
-        UHard
+        A2,
+        B1,
+        B2,
+        C1
     }
 }
