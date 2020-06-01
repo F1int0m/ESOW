@@ -109,6 +109,8 @@ namespace ESOW
                 new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/uhard.png")));
 
         }
+
+        //Пожалуйста, научите Рому использовать git
         private void TranslateButton(object sender, RoutedEventArgs e)
         {
             ResBox.Document.Blocks.Clear();
