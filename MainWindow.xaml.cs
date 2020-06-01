@@ -20,7 +20,6 @@ namespace ESOW
         private string LoadedFile;
         private bool IsTranslate = false;
         private Translator Translator = new Translator();
-        private List<Document> listOfDocuments;
         private DictWithTranslate Dictionary = new DictWithTranslate();
         private string GetLang() => IsTranslate ? "ru-en" : "en-ru";
 
@@ -28,8 +27,7 @@ namespace ESOW
         public MainWindow()
         {
             InitializeComponent();
-            listOfDocuments = CreateDocumentsList();
-            CreateButtons(listOfDocuments);
+            CreateButtons(CreateDocumentsList());
             Dictionary.LoadDict();
             ListBox.ItemsSource = Dictionary.Dict;
             this.TabCont.SelectedIndex = 1;
@@ -38,6 +36,7 @@ namespace ESOW
 
         private List<Document> CreateDocumentsList()
         {
+            
             return Directory.GetDirectories("../../Resources/texts").SelectMany(x => Directory.EnumerateFiles(x).Select(
                     z =>
                     {
@@ -45,10 +44,23 @@ namespace ESOW
                             x.Contains("B1") ? Difficult.Medium :
                             x.Contains("B2") ? Difficult.Hard : Difficult.UHard;
                         var title = z.Split('\\').Last().Replace(".txt", "");
+                        var translate = Directory.GetDirectories(x).Select(r =>
+                        {
+                            var endpath = Directory.EnumerateFiles(r).FirstOrDefault(g => g.Contains(title));
+                            if (endpath==null)
+                            {
+                                return null;
+                            }
+                            using (var sr = new StreamReader(endpath))
+                            {
+                                return sr.ReadToEnd();
+                            }
+                        }).FirstOrDefault();
+
                         using (StreamReader sr = new StreamReader(z))
                         {
-                            var wCount = int.TryParse(sr.ReadLine(), out var c) ? c : 0;
-                            return new Document(title, sr.ReadToEnd(), "none", difficult, wCount);
+                            var text = sr.ReadToEnd();
+                            return new Document(title, text, translate!=null?translate:"none", difficult, text.Split(' ').Length);
                         }
                     }))
                 .ToList();
@@ -188,8 +200,9 @@ namespace ESOW
 
         private void DeleteWordMenuItem(object sender, RoutedEventArgs e)
         {
-            var word = ((dynamic) ((dynamic)sender).DataContext).Key;
-            Dictionary.Remove(word);
+            System.Windows.Controls.MenuItem mi = e.OriginalSource as System.Windows.Controls.MenuItem;
+
+            //Dictionary.Remove(word);
             ListBox.Items.Refresh();
         }
 

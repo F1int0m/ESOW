@@ -136,6 +136,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dict\" />
+    <Folder Include="Resources\texts\elementary %28A2%29\Translate\" />
+    <Folder Include="Resources\texts\intermediate %28B1%29\Translate\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\CustomText.png" />
