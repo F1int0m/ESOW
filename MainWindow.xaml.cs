@@ -92,17 +92,10 @@ namespace ESOW
             Panel.Children.Clear();
             var type = typeof(Document);
             var c = type.GetProperty(OrderBox.SelectedIndex <= 1 ? "Difficult" : "WordsCount");
-            if (OrderBox.SelectedIndex % 2 == 0)
+            documentList = OrderBox.SelectedIndex % 2 == 0 ? documentList.OrderBy(z => c?.GetValue(z)).ToList() : documentList.OrderByDescending(z => c?.GetValue(z)).ToList();
+            foreach (var doc in documentList)
             {
-                foreach (var tDocument in documentList.OrderBy(z => c))
-                {
-                    CreateButton(tDocument);
-                }
-                return;
-            }
-            foreach (var tDocument in documentList.OrderByDescending(z => c))
-            {
-                CreateButton(tDocument);
+                CreateButton(doc);
             }
 
         }
