@@ -34,10 +34,11 @@ namespace ESOW
 
     public enum Difficult  
     {
+        Default,
         Custom,
-        Easy,
-        Medium,
-        Hard,
-        UHard
+        A2,
+        B1,
+        B2,
+        C1
     }
 }

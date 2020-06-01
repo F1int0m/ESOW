@@ -23,23 +23,24 @@ namespace ESOW
         private List<Document> documentList;
         private Translator Translator = new Translator();
         private DictWithTranslate Dictionary = new DictWithTranslate();
+        private List<Difficult> SelecteDifficults = new List<Difficult>();
         private string GetLang() => IsTranslate ? "ru-en" : "en-ru";
 
 
         public MainWindow()
         {
-            InitializeComponent();
             documentList = CreateDocumentsList();
-            CreateButtons(documentList);
-            InitialezeOrderBox();
+            InitializeComponent();
+            UpdateTextsButtons(documentList);
+            InitializeOrderBox();
             Dictionary.LoadDict();
             ListBox.ItemsSource = Dictionary.Dict;
             this.TabCont.SelectedIndex = 1;
         }
 
-        private void InitialezeOrderBox()
+        private void InitializeOrderBox()
         {
-            var list = new List<string>{"Order by difficult(>)","Order byy difficult(<)","Order by length(>)", "Order by length(<)" };//new Dictionary<string, string> {["123"] = "WordsCount",["234"] = "Difficult"};
+            var list = new List<string>{"Order by difficult(>)","Order byy difficult(<)","Order by length(>)", "Order by length(<)" };
             OrderBox.ItemsSource = list;
             OrderBox.SelectedIndex = 0;
         }
@@ -51,9 +52,9 @@ namespace ESOW
             return Directory.GetDirectories("../../Resources/texts").SelectMany(x => Directory.EnumerateFiles(x).Select(
                     z =>
                     {
-                        var difficult = x.Contains("A2") ? Difficult.Easy :
-                            x.Contains("B1") ? Difficult.Medium :
-                            x.Contains("B2") ? Difficult.Hard : Difficult.UHard;
+                        var difficult = x.Contains("A2") ? Difficult.A2 :
+                            x.Contains("B1") ? Difficult.B1 :
+                            x.Contains("B2") ? Difficult.B2 : Difficult.C1;
                         var title = z.Split('\\').Last().Replace(".txt", "");
                         var translate = Directory.GetDirectories(x).Select(r =>
                         {
@@ -78,9 +79,10 @@ namespace ESOW
         }
         
 
-        private void CreateButtons(IEnumerable<Document> d)
+        private void UpdateTextsButtons(IEnumerable<Document> d)
         {
-            foreach (var doc in d.OrderBy(x=>x.Difficult))
+            Panel.Children.Clear();
+            foreach (var doc in d.Where(x=>SelecteDifficults.Contains(x.Difficult)))
             {
                 CreateButton(doc);
             }
@@ -89,15 +91,11 @@ namespace ESOW
 
         private void ReorderButton(object sender, RoutedEventArgs e)
         {
-            Panel.Children.Clear();
+            
             var type = typeof(Document);
             var c = type.GetProperty(OrderBox.SelectedIndex <= 1 ? "Difficult" : "WordsCount");
             documentList = OrderBox.SelectedIndex % 2 == 0 ? documentList.OrderBy(z => c?.GetValue(z)).ToList() : documentList.OrderByDescending(z => c?.GetValue(z)).ToList();
-            foreach (var doc in documentList)
-            {
-                CreateButton(doc);
-            }
-
+            UpdateTextsButtons(documentList);
         }
 
         private void CreateButton(Document doc)
@@ -127,9 +125,9 @@ namespace ESOW
         private static ImageBrush SelectBackground(Difficult dif)
         {
             return dif == Difficult.Custom ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/custom.png"))) :
-                dif == Difficult.Easy ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/ez.png"))) :
-                dif == Difficult.Medium ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/med.png"))) :
-                dif == Difficult.Hard ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/hard.png"))) :
+                dif == Difficult.A2 ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/ez.png"))) :
+                dif == Difficult.B1 ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/med.png"))) :
+                dif == Difficult.B2 ? new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/hard.png"))) :
                 new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/Resources/uhard.png")));
 
         }
@@ -247,6 +245,35 @@ namespace ESOW
         private void RefreshListbox(object sender, MouseEventArgs e)
         {
             ListBox.Items.Refresh();
+        }
+
+        private void AddDifficult(object sender, RoutedEventArgs e)
+        {
+            var box = sender as CheckBox;
+            Enum.TryParse(box.Name, out Difficult dif);
+            if (dif!=default)
+            {
+                SelecteDifficults.Add(dif);
+            }
+            UpdateTextsButtons(documentList);
+        }
+
+        private void RemoveDifficult(object sender, RoutedEventArgs e)
+        {
+            var box = sender as CheckBox;
+            Enum.TryParse(box.Name, out Difficult dif);
+            if (dif != default)
+            {
+                try
+                {
+                    SelecteDifficults.Remove(dif);
+                }
+                catch (Exception exception)
+                {
+                    //ignore
+                }
+            }
+            UpdateTextsButtons(documentList);
         }
     }
 }

@@ -44,9 +44,18 @@
                     <Image Source="pack://application:,,,/Resources/bulldog.png" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
                     <Label Content="Select text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
 
-                    <ComboBox Grid.Column="1"  Grid.Row="2"  Name="OrderBox" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="ReorderButton">
-                        
-                    </ComboBox>
+                    <ComboBox Grid.Column="1"  Grid.Row="2"  Name="OrderBox" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="ReorderButton"/>
+                    
+                    <StackPanel Name="CheckBoxPanel" Grid.Row="0"  Grid.RowSpan="2" Grid.Column="1">
+
+                        <CheckBox Name="A2" Content="A2" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True"/>
+                        <CheckBox Name="B1" Content="B1" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True"/>
+                        <CheckBox Name="B2" Content="B2" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True"/>
+                        <CheckBox Name="C1" Content="C1" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True"/>
+                        <CheckBox Name="Custom" Content="Custom" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True"/>
+                    </StackPanel>
+
+
 
 
                 </Grid>
