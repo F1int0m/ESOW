@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -60,7 +61,7 @@ namespace ESOW
                         using (StreamReader sr = new StreamReader(z))
                         {
                             var text = sr.ReadToEnd();
-                            return new Document(title, text, translate!=null?translate:"none", difficult, text.Split(' ').Length);
+                            return new Document(title, text, translate ?? "none", difficult, text.Split(' ').Length);
                         }
                     }))
                 .ToList();
@@ -200,9 +201,8 @@ namespace ESOW
 
         private void DeleteWordMenuItem(object sender, RoutedEventArgs e)
         {
-            System.Windows.Controls.MenuItem mi = e.OriginalSource as System.Windows.Controls.MenuItem;
-
-            //Dictionary.Remove(word);
+            var word = (KeyValuePair<string,List<string>>) ListBox.SelectedItem;
+            Dictionary.Remove(word.Key);
             ListBox.Items.Refresh();
         }
 
