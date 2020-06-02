@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ESOW"
         Visibility="Visible" Closing="Window_Closing"
-        Style="{DynamicResource WindowStyle}" MinWidth="968" MinHeight="571" Width="1288" Height="751" WindowStartupLocation="CenterScreen" Icon="Resources/icon.png" >
+        Style="{DynamicResource WindowStyle}" MinWidth="1288" MinHeight="751" Width="1288" Height="751" WindowStartupLocation="CenterScreen" Icon="Resources/icon.png" >
     <Grid>
         <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Source="Resources/logo.png" Panel.ZIndex="5"/>
         <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" TabIndex="214748364" Panel.ZIndex="1" >
@@ -31,29 +31,29 @@
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2.5 cm"/>
-                        <RowDefinition Height="300*"/>
-                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="100*"/>
+                        <RowDefinition Height="200*"/>
+                        <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180*"/>
+                        <ColumnDefinition Width="150*"/>
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
-                    <ScrollViewer  Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer  Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
                         <StackPanel Name="Panel" />
                     </ScrollViewer>
-                    <Image Source="pack://application:,,,/Resources/bulldog.png" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
-                    <Label Content="Select text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
-
-                    <ComboBox Grid.Column="1"  Grid.Row="2"  Name="OrderBox" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="ReorderButton"/>
-                    
-                    <StackPanel Name="CheckBoxPanel" Grid.Row="0"  Grid.RowSpan="2" Grid.Column="1">
-
-                        <CheckBox Name="A2" Content="A2" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True"/>
-                        <CheckBox Name="B1" Content="B1" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True"/>
-                        <CheckBox Name="B2" Content="B2" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True"/>
-                        <CheckBox Name="C1" Content="C1" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True"/>
-                        <CheckBox Name="Custom" Content="Custom" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True"/>
+                    <Image Source="pack://application:,,,/Resources/bulldog.png" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
+                    <Label Content="Выберите текст" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontFamily="Ubuntu" />
+                    <ComboBox  Name="OrderBox" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ReorderButton" Margin="5,45,10,0" Grid.Column="1" FontFamily="Ubuntu" BorderBrush="{x:Null}" Background="Black"/>
+                    <StackPanel Name="CheckBoxPanel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="5,35,5,0" Background="#4CFFFFFF">
+                        <CheckBox Name="A2" Content="elementary (A2)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
+                        <CheckBox Name="B1" Content="intermediate (B1)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
+                        <CheckBox Name="B2" Content="upper-intermediate (B2)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
+                        <CheckBox Name="C1" Content="advanced (C1)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
+                        <CheckBox Name="Custom" Content="Польз. тексты" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu"/>
                     </StackPanel>
+                    <Label Content="Сортировка" HorizontalAlignment="Left" Margin="5,10,10,0" VerticalAlignment="Top" FontFamily="Ubuntu" FontSize="22" Grid.Column="1" Background="#4CFFFFFF"/>
+                    <Label Content="Уровни сложности" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Ubuntu" FontSize="22" Background="#4CFFFFFF"/>
 
 
 
@@ -133,7 +133,7 @@
                         <RowDefinition Height="300*"/>
                         <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
-                    <ListBox Name="ListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.Row="1"  >
+                    <ListBox Name="ListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}"  >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Name="DictPanel"  Margin="5">
@@ -169,7 +169,7 @@
                         <RowDefinition Height="46*"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
-                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="80"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -188,11 +188,11 @@
                             </Paragraph>
                         </FlowDocument>
                     </RichTextBox>
-                    <Button Content="Translate" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15,5" Click="TranslateButton" Style="{DynamicResource ButtonStyle}"></Button>
+                    <Button Content="Translate" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15,10" Click="TranslateButton" Style="{DynamicResource ButtonStyle}"></Button>
                     <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="10,0" Style="{DynamicResource TextStyle}" />
                     <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                    <Button Content="ShowTranslate" Grid.Row="4" Grid.Column="1" Margin="10,5" Name="TempBut" Click="ShowTranslateButton" Style="{DynamicResource ButtonStyle}" ></Button>
-                    <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15,5" Content="Add to dictionary" Click="AddToDict_OnClick" Style="{DynamicResource ButtonStyle}"></Button>
+                    <Button Content="ShowTranslate" Grid.Row="4" Grid.Column="1" Margin="15,10" Name="TempBut" Click="ShowTranslateButton" Style="{DynamicResource ButtonStyle}" ></Button>
+                    <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15,10" Content="Add to dictionary" Click="AddToDict_OnClick" Style="{DynamicResource ButtonStyle}"></Button>
                 </Grid>
             </TabItem>
             <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">

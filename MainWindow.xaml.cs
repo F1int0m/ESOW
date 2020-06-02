@@ -209,8 +209,7 @@ namespace ESOW
 
         private void DarkThemeChanger(object sender, RoutedEventArgs e)
         {
-            string style = "DarkTheme";
-            var uri = new Uri(style + ".xaml", UriKind.Relative);
+            var uri = new Uri("DarkTheme" + ".xaml", UriKind.Relative);
             ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
             Application.Current.Resources.Clear();
             Application.Current.Resources.MergedDictionaries.Add(resourceDict);
@@ -237,7 +236,7 @@ namespace ESOW
         {
             if (int.TryParse(fontSizeBox.Text,out var size))
             {
-                size = size < 15 ? 15 : size > 40 ?40:size;
+                size = size < 15 ? 15 : size > 32 ? 32 : size;
             }
             FontSize = size>0?size:15;
         }
