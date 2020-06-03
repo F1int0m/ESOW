@@ -218,7 +218,7 @@
                     <RadioButton Content="Тёмная тема" VerticalAlignment="Top" Checked="DarkThemeChanger" Margin="0,150,0,0" FontFamily="Ubuntu" FontSize="22" />
                     <Button Height="100" Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" Margin="0,200,0,0">Under construction</Button>
                     <TextBox Name="fontSizeBox" Margin="180,200,0,0" TextChanged="FontSizeBox_OnTextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="35" FontFamily="Ubuntu" FontSize="22" TextAlignment="Center">20</TextBox>
-                    <TextBox x:Name="testtext" Margin="10,271,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="45" Text="Съешь же ещё этих мягких французских булочек, да выпей чаю." FontFamily="Ubuntu" IsReadOnly="True"/>
+                    <TextBox x:Name="testtext" Margin="10,271,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="45" Text="Съешь же ещё этих мягких французских булок, да выпей чаю." FontFamily="Ubuntu" IsReadOnly="True"/>
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource TextBlockStyle}" FontFamily="Ubuntu" Margin="10,205,0,0" FontSize="22"><Run Text="Размер текста:"/></TextBlock>
                 </Grid>
             </TabItem>
