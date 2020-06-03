@@ -40,7 +40,7 @@ namespace ESOW
 
         private void InitializeOrderBox()
         {
-            var list = new List<string>{"Order by difficult(>)","Order byy difficult(<)","Order by length(>)", "Order by length(<)" };
+            var list = new List<string>{"Сложность по возрастанию","Сложность по убыванию","Длина по возрастанию", "Длина по убыванию" };
             OrderBox.ItemsSource = list;
             OrderBox.SelectedIndex = 0;
         }
@@ -236,9 +236,14 @@ namespace ESOW
         {
             if (int.TryParse(fontSizeBox.Text,out var size))
             {
-                size = size < 15 ? 15 : size > 32 ? 32 : size;
+                size = size < 14 ? 14 : size > 32 ? 32 : size;
             }
-            FontSize = size>0?size:15;
+            FontSize = size > 0 ? size : 14;
+        }
+
+        private void Kostyl(object sender, MouseEventArgs e)
+        {
+            fontSizeBox.Text = FontSize.ToString();
         }
 
         private void RefreshListbox(object sender, MouseEventArgs e)

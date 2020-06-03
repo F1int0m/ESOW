@@ -44,7 +44,7 @@
                     </ScrollViewer>
                     <Image Source="pack://application:,,,/Resources/bulldog.png" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
                     <Label Content="Выберите текст" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontFamily="Ubuntu" />
-                    <ComboBox  Name="OrderBox" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ReorderButton" Margin="5,45,10,0" Grid.Column="1" FontFamily="Ubuntu" BorderBrush="{x:Null}" Background="Black"/>
+                    <ComboBox  Name="OrderBox" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ReorderButton" Margin="5,45,5,0" Grid.Column="1" FontFamily="Ubuntu" BorderBrush="{x:Null}" Background="Black"/>
                     <StackPanel Name="CheckBoxPanel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="5,35,5,0" Background="#4CFFFFFF">
                         <CheckBox Name="A2" Content="elementary (A2)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
                         <CheckBox Name="B1" Content="intermediate (B1)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
@@ -95,15 +95,15 @@
                     </Grid.ColumnDefinitions>
                     <Image Source="pack://application:,,,/Resources/DragAndDrop.png" 
                            Grid.Row="1" Grid.Column="3" AllowDrop="True" Drop="DropEvent" Grid.RowSpan="5" />
-                    <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource TextBlockStyle}">
-                        Tittle
+                    <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource TextBlockStyle}" FontFamily="Ubuntu">
+                        Название
                     </TextBlock>
                     <TextBox Name ="CustomTittle" Text="" Grid.Row="2" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
-                    <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{DynamicResource TextBlockStyle}">
-                        Author
+                    <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{DynamicResource TextBlockStyle}" FontFamily="Ubuntu">
+                        Автор
                     </TextBlock>
                     <TextBox Name ="CustomA" Text="" Grid.Row="4" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
-                    <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Load Custom Text" FontSize="15" Click="MakeCustomButton_OnClick" Style="{DynamicResource ButtonStyle}" ></Button>
+                    <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Загрузить текст" FontSize="25" Click="MakeCustomButton_OnClick" Style="{DynamicResource ButtonStyle}" FontFamily="Ubuntu" ></Button>
                 </Grid>
             </TabItem>
             <TabItem Name="DictZone" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" MouseEnter="RefreshListbox">
@@ -188,14 +188,14 @@
                             </Paragraph>
                         </FlowDocument>
                     </RichTextBox>
-                    <Button Content="Translate" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15,10" Click="TranslateButton" Style="{DynamicResource ButtonStyle}"></Button>
+                    <Button Content="Перевести" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15,10" Click="TranslateButton" Style="{DynamicResource ButtonStyle}"></Button>
                     <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="10,0" Style="{DynamicResource TextStyle}" />
-                    <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                    <Button Content="ShowTranslate" Grid.Row="4" Grid.Column="1" Margin="15,10" Name="TempBut" Click="ShowTranslateButton" Style="{DynamicResource ButtonStyle}" ></Button>
-                    <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15,10" Content="Add to dictionary" Click="AddToDict_OnClick" Style="{DynamicResource ButtonStyle}"></Button>
+                    <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Ubuntu"  />
+                    <Button Content="Показать перевод" Grid.Row="4" Grid.Column="1" Margin="15,10" Name="TempBut" Click="ShowTranslateButton" Style="{DynamicResource ButtonStyle}" ></Button>
+                    <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15,10" Content="Добавить в словарь" Click="AddToDict_OnClick" Style="{DynamicResource ButtonStyle}"></Button>
                 </Grid>
             </TabItem>
-            <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseEnter="Kostyl">
                 <TabItem.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -214,10 +214,12 @@
                 <Grid Margin="10,0,0,0">
 
 
-                    <RadioButton Content="Default" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True" Margin="0,100,0,0"/>
-                    <RadioButton Content="Dark" VerticalAlignment="Top" Checked="DarkThemeChanger" Margin="0,150,0,0" />
-                    <Button Height="100" Width="200" Style="{DynamicResource ButtonStyle}">Under construction</Button>
-                    <TextBox Name="fontSizeBox" Margin="10,200,0,0" TextChanged="FontSizeBox_OnTextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="50">20</TextBox>
+                    <RadioButton Content="Светлая тема" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True" Margin="0,100,0,0" FontFamily="Ubuntu" FontSize="22"/>
+                    <RadioButton Content="Тёмная тема" VerticalAlignment="Top" Checked="DarkThemeChanger" Margin="0,150,0,0" FontFamily="Ubuntu" FontSize="22" />
+                    <Button Height="100" Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" Margin="0,200,0,0">Under construction</Button>
+                    <TextBox Name="fontSizeBox" Margin="180,200,0,0" TextChanged="FontSizeBox_OnTextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="35" FontFamily="Ubuntu" FontSize="22" TextAlignment="Center">20</TextBox>
+                    <TextBox x:Name="testtext" Margin="10,271,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="45" Text="Съешь же ещё этих мягких французских булочек, да выпей чаю." FontFamily="Ubuntu" IsReadOnly="True"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource TextBlockStyle}" FontFamily="Ubuntu" Margin="10,205,0,0" FontSize="22"><Run Text="Размер текста:"/></TextBlock>
                 </Grid>
             </TabItem>
         </TabControl>
