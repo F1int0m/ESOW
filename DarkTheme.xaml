@@ -31,5 +31,15 @@
         <Setter Property="Foreground" Value="White" />
         <Setter Property="BorderBrush" Value="Gray" />
     </Style>
+
+    <Style x:Key="DictElement" TargetType="StackPanel">
+        <Setter Property="Background" >
+            <Setter.Value>
+            <ImageBrush ImageSource="Resources/ez.png">
+
+            </ImageBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
 </ResourceDictionary>

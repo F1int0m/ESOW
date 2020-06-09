@@ -29,5 +29,16 @@
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="BorderBrush" Value="Gray" />
     </Style>
-    
+
+
+    <Style x:Key="DictElement" TargetType="StackPanel">
+        <Setter Property="Background" >
+            <Setter.Value>
+                <ImageBrush ImageSource="Resources/hard.png">
+
+                </ImageBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>
