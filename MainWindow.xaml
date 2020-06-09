@@ -44,18 +44,20 @@
                     </ScrollViewer>
                     <Image Source="pack://application:,,,/Resources/bulldog.png" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
                     <Label Content="Выберите текст" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontFamily="Ubuntu" />
-                    <ComboBox  Name="OrderBox" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ReorderButton" Margin="5,45,5,0" Grid.Column="1" FontFamily="Ubuntu" BorderBrush="{x:Null}" Background="Black"/>
+
+                    <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                        <Label Content="Сортировка" HorizontalAlignment="Left"  VerticalAlignment="Top" FontFamily="Ubuntu" FontSize="22"  Background="#4CFFFFFF"/>
+                        <ComboBox  Name="OrderBox" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ReorderButton"  FontFamily="Ubuntu" BorderBrush="{x:Null}" Background="Black"/>
+                    </StackPanel>
+                    
                     <StackPanel Name="CheckBoxPanel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="5,35,5,0" Background="#4CFFFFFF">
+                        <Label Content="Уровни сложности" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Ubuntu" FontSize="22" Background="#4CFFFFFF"/>
                         <CheckBox Name="A2" Content="elementary (A2)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
                         <CheckBox Name="B1" Content="intermediate (B1)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
                         <CheckBox Name="B2" Content="upper-intermediate (B2)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
                         <CheckBox Name="C1" Content="advanced (C1)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
                         <CheckBox Name="Custom" Content="Польз. тексты" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu"/>
                     </StackPanel>
-                    <Label Content="Сортировка" HorizontalAlignment="Left" Margin="5,10,10,0" VerticalAlignment="Top" FontFamily="Ubuntu" FontSize="22" Grid.Column="1" Background="#4CFFFFFF"/>
-                    <Label Content="Уровни сложности" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Ubuntu" FontSize="22" Background="#4CFFFFFF"/>
-
-
 
 
                 </Grid>
@@ -136,13 +138,13 @@
                     <ListBox Name="ListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}"  >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Name="DictPanel"  Margin="5">
+                                <StackPanel Name="DictPanel"  Margin="5" Style="{DynamicResource DictElement}" >
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip"  Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}">
+                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip"  Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}" Background="{x:Null}">
                                             <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}"  Text="{Binding Path=Value[0]}"  Grid.Column="10" Grid.Row="10" Margin="15,15,15,0"/>
                                         </TextBlock>
                                     </Grid>
