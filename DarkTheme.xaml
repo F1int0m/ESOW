@@ -26,8 +26,13 @@
     <Style x:Key="TabStyle" TargetType="TabControl">
         <Setter Property="Background" Value="DarkGray" />
     </Style>
+
     <Style x:Key="ButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="Resources/custom.png"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Foreground" Value="White" />
         <Setter Property="BorderBrush" Value="Gray" />
     </Style>
@@ -35,9 +40,7 @@
     <Style x:Key="DictElement" TargetType="StackPanel">
         <Setter Property="Background" >
             <Setter.Value>
-            <ImageBrush ImageSource="Resources/ez.png">
-
-            </ImageBrush>
+                <ImageBrush ImageSource="Resources/ez.png"/>
             </Setter.Value>
         </Setter>
     </Style>
