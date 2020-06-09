@@ -154,7 +154,7 @@ namespace ESOW
             }
         }
 
-        private void DropEvent(object sender, DragEventArgs e)
+        private void TextDropEvent(object sender, DragEventArgs e)
         {
 
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -272,7 +272,7 @@ namespace ESOW
                 {
                     SelecteDifficults.Remove(dif);
                 }
-                catch (Exception exception)
+                catch (Exception)
                 {
                     //ignore
                 }

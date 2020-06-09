@@ -46,7 +46,7 @@ namespace ESOW
                 MainDict = temp.MainDict;
                 TrDict = temp.TrDict;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // ignored
             }

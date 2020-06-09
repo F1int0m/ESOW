@@ -96,7 +96,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Image Source="pack://application:,,,/Resources/DragAndDrop.png" 
-                           Grid.Row="1" Grid.Column="3" AllowDrop="True" Drop="DropEvent" Grid.RowSpan="5" />
+                           Grid.Row="1" Grid.Column="3" AllowDrop="True" Drop="TextDropEvent" Grid.RowSpan="5" />
                     <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource TextBlockStyle}" FontFamily="Ubuntu">
                         Название
                     </TextBlock>
