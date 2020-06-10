@@ -9,7 +9,7 @@
         Visibility="Visible" Closing="Window_Closing"
         Style="{DynamicResource WindowStyle}" MinWidth="1288" MinHeight="751" Width="1288" Height="751" WindowStartupLocation="CenterScreen" Icon="Resources/icon.png" >
     <Grid>
-        <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Source="Resources/logo.png" Panel.ZIndex="5"/>
+        <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Panel.ZIndex="5" Style="{DynamicResource LogoStyle}"/>
         <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" TabIndex="214748364" Panel.ZIndex="1" >
             <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="-80,0,0,0" Height="2.4 cm" Width="0.1" />
             <TabItem Name="ReadyTextList" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
@@ -42,21 +42,21 @@
                     <ScrollViewer  Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
                         <StackPanel Name="Panel" />
                     </ScrollViewer>
-                    <Image Source="pack://application:,,,/Resources/bulldog.png" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
-                    <Label Content="Выберите текст" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontFamily="Ubuntu" />
+                    <Image Source="pack://application:,,,/Resources/bulldog.png" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="20,0,10,10"/>
+                    <Label Content="Выберите текст" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}"/>
 
-                    <StackPanel Grid.Column="1" Margin="5,0,0,0">
-                        <Label Content="Сортировка" HorizontalAlignment="Left"  VerticalAlignment="Top" FontFamily="Ubuntu" FontSize="22"  Background="#4CFFFFFF"/>
+                    <StackPanel Grid.Column="1" Margin="5,5,0,0">
+                        <Label Content="Сортировка" HorizontalAlignment="Left"  VerticalAlignment="Top" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}" FontWeight="Bold"/>
                         <ComboBox  Name="OrderBox" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="ReorderButton"  FontFamily="Ubuntu" BorderBrush="{x:Null}" Background="Black"/>
                     </StackPanel>
-                    
-                    <StackPanel Name="CheckBoxPanel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="5,35,5,0" Background="#4CFFFFFF">
-                        <Label Content="Уровни сложности" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Ubuntu" FontSize="22" Background="#4CFFFFFF"/>
-                        <CheckBox Name="A2" Content="elementary (A2)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
-                        <CheckBox Name="B1" Content="intermediate (B1)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
-                        <CheckBox Name="B2" Content="upper-intermediate (B2)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
-                        <CheckBox Name="C1" Content="advanced (C1)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5"/>
-                        <CheckBox Name="Custom" Content="Польз. тексты" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu"/>
+
+                    <StackPanel Name="CheckBoxPanel" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="5,5,5,0">
+                        <Label Content="Уровни сложности" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}" FontWeight="Bold"/>
+                        <CheckBox Name="A2" Content="elementary (A2)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5" Style="{DynamicResource CheckBoxStyle}"/>
+                        <CheckBox Name="B1" Content="intermediate (B1)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5" Style="{DynamicResource CheckBoxStyle}"/>
+                        <CheckBox Name="B2" Content="upper-intermediate (B2)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5" Style="{DynamicResource CheckBoxStyle}"/>
+                        <CheckBox Name="C1" Content="advanced (C1)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5" Style="{DynamicResource CheckBoxStyle}"/>
+                        <CheckBox Name="Custom" Content="Польз. тексты" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Style="{DynamicResource CheckBoxStyle}"/>
                     </StackPanel>
 
 
@@ -80,7 +80,7 @@
                 </TabItem.Header>
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*" MaxHeight="2.5 cm"/>
                         <RowDefinition Height="0.5*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="0.5*"/>
@@ -95,17 +95,29 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    <Label Content="Загрузка пользовательского текста" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}" Grid.Column="1" Grid.ColumnSpan="3"/>
                     <Image Source="pack://application:,,,/Resources/DragAndDrop.png" 
-                           Grid.Row="1" Grid.Column="3" AllowDrop="True" Drop="TextDropEvent" Grid.RowSpan="5" />
-                    <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource TextBlockStyle}" FontFamily="Ubuntu">
+                           Grid.Row="1" Grid.Column="3" AllowDrop="True" Drop="TextDropEvent" Grid.RowSpan="5" Margin="0,20,0,0" HorizontalAlignment="Center" />
+                    <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource LabelStyle}" FontFamily="Ubuntu">
                         Название
-                    </TextBlock>
-                    <TextBox Name ="CustomTittle" Text="" Grid.Row="2" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
-                    <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{DynamicResource TextBlockStyle}" FontFamily="Ubuntu">
+                    </Label>
+                    <TextBox Name ="CustomTittle" Text="" Grid.Row="2" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}">
+                        <TextBox.SelectionBrush>
+                            <SolidColorBrush Color="#FF9696FF"/>
+                        </TextBox.SelectionBrush>
+                    </TextBox>
+                    <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{DynamicResource LabelStyle}" FontFamily="Ubuntu">
                         Автор
+                    </Label>
+                    <TextBox Name ="CustomA" Text="" Grid.Row="4" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}">
+                        <TextBox.SelectionBrush>
+                            <SolidColorBrush Color="#FF9696FF"/>
+                        </TextBox.SelectionBrush>
+                    </TextBox>
+                    <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{DynamicResource TextBlockStyle}" FontFamily="Ubuntu" FontSize="15">
+                        Перетащите свой текст в формате txt сюда:
                     </TextBlock>
-                    <TextBox Name ="CustomA" Text="" Grid.Row="4" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}"></TextBox>
-                    <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Загрузить текст" FontSize="25" Click="MakeCustomButton_OnClick" Style="{DynamicResource ButtonStyle}" FontFamily="Ubuntu" ></Button>
+                    <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Загрузить текст" FontSize="25" Click="MakeCustomButton_OnClick" Style="{DynamicResource LongButtonStyle}" FontFamily="Ubuntu" ></Button>
                 </Grid>
             </TabItem>
             <TabItem Name="DictZone" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" MouseEnter="RefreshListbox">
@@ -126,26 +138,27 @@
                 </TabItem.Header>
                 <Grid Margin="10,0,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*" MaxWidth="2.5 cm"/>
                         <ColumnDefinition Width="600*"/>
-                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*" MaxWidth="2.5 cm"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*" MaxHeight="2.5 cm"/>
                         <RowDefinition Height="300*"/>
-                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*" MaxHeight="2.5 cm"/>
                     </Grid.RowDefinitions>
+                    <Label Content="Словарь" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}" Grid.Column="1"/>
                     <ListBox Name="ListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}"  >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Name="DictPanel"  Margin="5" Style="{DynamicResource DictElement}" >
-                                    <Grid>
+                                    <Grid Margin="0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip"  Margin="15,15,15,0" Style="{DynamicResource TextBlockStyle}" Background="{x:Null}">
-                                            <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}"  Text="{Binding Path=Value[0]}"  Grid.Column="10" Grid.Row="10" Margin="15,15,15,0"/>
+                                        <TextBlock Name="TextBlock"  Text="{Binding Path=Key}"  Grid.Column="10" MouseEnter="CreateToolTip"  Margin="15,5,15,15" Style="{DynamicResource TextBlockStyle}" Background="{x:Null}" VerticalAlignment="Center">
+                                            <ComboBox ItemsSource="{Binding Path=Value, Mode=OneWay}"  Text="{Binding Path=Value[0]}"  Grid.Column="10" Grid.Row="10" Margin="15,5,5,-8" VerticalAlignment="Center"/>
                                         </TextBlock>
                                     </Grid>
                                     <StackPanel.ContextMenu>
@@ -192,7 +205,7 @@
                     </RichTextBox>
                     <Button Content="Перевести" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15,10" Click="TranslateButton" Style="{DynamicResource ButtonStyle}"></Button>
                     <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="10,0" Style="{DynamicResource TextStyle}" />
-                    <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Ubuntu"  />
+                    <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}"/>
                     <Button Content="Показать перевод" Grid.Row="4" Grid.Column="1" Margin="15,10" Name="TempBut" Click="ShowTranslateButton" Style="{DynamicResource ButtonStyle}" ></Button>
                     <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15,10" Content="Добавить в словарь" Click="AddToDict_OnClick" Style="{DynamicResource ButtonStyle}"></Button>
                 </Grid>
@@ -214,14 +227,21 @@
                     </Grid>
                 </TabItem.Header>
                 <Grid Margin="10,0,0,0">
-
-
-                    <RadioButton Content="Светлая тема" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True" Margin="0,100,0,0" FontFamily="Ubuntu" FontSize="22"/>
-                    <RadioButton Content="Тёмная тема" VerticalAlignment="Top" Checked="DarkThemeChanger" Margin="0,150,0,0" FontFamily="Ubuntu" FontSize="22" />
-                    <Button Height="100" Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" Margin="0,200,0,0">Under construction</Button>
-                    <TextBox Name="fontSizeBox" Margin="180,200,0,0" TextChanged="FontSizeBox_OnTextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="35" FontFamily="Ubuntu" FontSize="22" TextAlignment="Center">20</TextBox>
-                    <TextBox x:Name="testtext" Margin="10,271,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="45" Text="Съешь же ещё этих мягких французских булок, да выпей чаю." FontFamily="Ubuntu" IsReadOnly="True"/>
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource TextBlockStyle}" FontFamily="Ubuntu" Margin="10,205,0,0" FontSize="22"><Run Text="Размер текста:"/></TextBlock>
+                    <Label Content="Настройки" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="40" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}" Margin="0,25,0,0"/>
+                    <Label Content="Тема оформления приложения" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,110,0,0" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}" FontSize="24"/>
+                    <RadioButton Content="Светлая" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True" Margin="0,155,0,0" FontFamily="Ubuntu" FontSize="22" Style="{DynamicResource RadioButtonStyle}" HorizontalAlignment="Left"/>
+                    <RadioButton Content="Тёмная" VerticalAlignment="Top" Checked="DarkThemeChanger" Margin="0,195,0,0" FontFamily="Ubuntu" FontSize="22" Style="{DynamicResource RadioButtonStyle}" HorizontalAlignment="Left"/>
+                    <Button Height="100" Style="{DynamicResource LongButtonStyle}" VerticalAlignment="Center" Margin="0,200,0,0">Under construction</Button>
+                    <TextBox Name="fontSizeBox" Margin="265,250,0,0" TextChanged="FontSizeBox_OnTextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="35" FontFamily="Ubuntu" FontSize="24" TextAlignment="Center" Style="{DynamicResource TextBoxStyle}">20</TextBox>
+                    <TextBox x:Name="testtext" Margin="10,295,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="45" Text="Съешь же ещё этих мягких французских булок, да выпей чаю." FontFamily="Ubuntu" IsReadOnly="True" Style="{DynamicResource TextBoxStyle}">
+                        <TextBox.SelectionTextBrush>
+                            <SolidColorBrush Color="#FF9696FF"/>
+                        </TextBox.SelectionTextBrush>
+                        <TextBox.SelectionBrush>
+                            <SolidColorBrush Color="#FF9696FF"/>
+                        </TextBox.SelectionBrush>
+                    </TextBox>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource TextBlockStyle}" FontFamily="Ubuntu" Margin="10,250,0,0" FontSize="24"><Run Text="Размер текста (14-34):"/></TextBlock>
                 </Grid>
             </TabItem>
         </TabControl>

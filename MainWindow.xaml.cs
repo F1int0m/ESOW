@@ -100,14 +100,15 @@ namespace ESOW
 
         private void CreateButton(Document doc)
         {
-            var t = new Button
+           var t = new Button
             {
                 Content = (doc.IsOurText ? doc.Title : "(*)" + doc.Title) + " ("+doc.WordsCount+")",
                 Height = 60,
                 Background = SelectBackground(doc.Difficult),
                 BorderBrush = null,
                 FontSize = 24,
-                FontFamily = new System.Windows.Media.FontFamily("Ubuntu")
+                FontFamily = new System.Windows.Media.FontFamily("Ubuntu"),
+                Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(9, 6, 117))
             };
             t.Click += (s, a) =>
             {
@@ -236,7 +237,7 @@ namespace ESOW
         {
             if (int.TryParse(fontSizeBox.Text,out var size))
             {
-                size = size < 14 ? 14 : size > 32 ? 32 : size;
+                size = size < 14 ? 14 : size > 34 ? 34 : size;
             }
             FontSize = size > 0 ? size : 14;
         }

@@ -4,43 +4,69 @@
 
 
     <Style x:Key="TextStyle" TargetType="RichTextBox">
-        <Setter Property="Background" Value="White" />
-        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="#FF090675" />
     </Style>
     <Style x:Key="TextBoxStyle" TargetType="TextBox">
-        <Setter Property="Background" Value="White" />
-        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="#FF090675" />
     </Style>
     <Style x:Key="TextBlockStyle" TargetType="TextBlock">
-        <Setter Property="Background" Value="White" />
-        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="#FF090675" />
     </Style>
 
     <Style x:Key="WindowStyle" TargetType="Window">
         <Setter Property="Background" Value="#FFC5DCFF" />
         <Setter Property="Foreground" Value="{x:Null}" />
     </Style>
+    
     <Style x:Key="TabStyle" TargetType="TabControl">
-        <Setter Property="Background" Value="Aqua" />
+        <Setter Property="Background" Value="{x:Null}" />
     </Style>
 
     <Style x:Key="ButtonStyle" TargetType="Button">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="Resources/ez.png"/>
+                <ImageBrush ImageSource="Resources/butt.png"/>
             </Setter.Value>
         </Setter>
-        <Setter Property="Foreground" Value="Black" />
-        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="Foreground" Value="#FF090675" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
     </Style>
 
+    <Style x:Key="LongButtonStyle" TargetType="Button">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="Resources/longButt.png"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="#FF090675" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+    </Style>
+
+    <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="#FF090675" />
+    </Style>
+
+    <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="#FF090675" />
+    </Style>
 
     <Style x:Key="DictElement" TargetType="StackPanel">
         <Setter Property="Background" >
             <Setter.Value>
-                <ImageBrush ImageSource="Resources/hard.png"/>
+                <ImageBrush ImageSource="Resources/butt.png"/>
             </Setter.Value>
         </Setter>
     </Style>
 
+    <Style x:Key="LabelStyle" TargetType="Label">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="#FF090675" />
+    </Style>
+
+    <Style x:Key="LogoStyle" TargetType="Image">
+        <Setter Property="Source" Value="Resources/logo.png"/>
+    </Style>
 </ResourceDictionary>

@@ -121,6 +121,12 @@
   <data name="bulldog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bulldog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="butt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buttDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="custom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\custom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -150,6 +156,15 @@
   </data>
   <data name="logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logoDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="longButt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\longButt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="longButtDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\longButtDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="med" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\med.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

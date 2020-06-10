@@ -199,6 +199,21 @@
   <ItemGroup>
     <Resource Include="icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\butt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\buttDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\longButt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\longButtDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logoDark.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
