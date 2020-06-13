@@ -108,7 +108,7 @@ namespace ESOW
                 BorderBrush = null,
                 FontSize = 24,
                 FontFamily = new System.Windows.Media.FontFamily("Ubuntu"),
-                Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(9, 6, 117))
+                Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(24, 24, 144))
             };
             t.Click += (s, a) =>
             {
@@ -171,7 +171,7 @@ namespace ESOW
 
         private void MakeCustomButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (CustomTittle.Text=="")
+            if (CustomTittle.Text == "")
             {
                 return;
             }

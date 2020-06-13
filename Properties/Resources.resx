@@ -127,14 +127,26 @@
   <data name="buttDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buttDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ctTextBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ctTextBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ctTextBGDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ctTextBGDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="custom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\custom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CustomText1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CustomText.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CustomTextDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CustomTextDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Dict1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dict.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DictDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DictDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DragAndDrop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DragAndDrop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,8 +184,20 @@
   <data name="Settings1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Texts1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Texts.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SettingsDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SettingsDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Texts2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Texts2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Texts2Dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Texts2Dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="trsltBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trsltBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="trsltBGDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trsltBGDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="uhard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\uhard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dict\" />
+    <Folder Include="Resources\old\" />
     <Folder Include="Resources\texts\elementary %28A2%29\Translate\" />
     <Folder Include="Resources\texts\intermediate %28B1%29\Translate\" />
   </ItemGroup>
@@ -150,9 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Texts.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\k.png" />
@@ -213,6 +211,33 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logoDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ctTextBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ctTextBGDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\trsltBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\trsltBGDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Texts2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CustomTextDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DictDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SettingsDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Texts2Dark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -93,6 +93,26 @@ namespace ESOW.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ctTextBG {
+            get {
+                object obj = ResourceManager.GetObject("ctTextBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ctTextBGDark {
+            get {
+                object obj = ResourceManager.GetObject("ctTextBGDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap custom {
             get {
                 object obj = ResourceManager.GetObject("custom", resourceCulture);
@@ -113,9 +133,29 @@ namespace ESOW.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap CustomTextDark {
+            get {
+                object obj = ResourceManager.GetObject("CustomTextDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Dict1 {
             get {
                 object obj = ResourceManager.GetObject("Dict1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap DictDark {
+            get {
+                object obj = ResourceManager.GetObject("DictDark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +283,49 @@ namespace ESOW.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Texts1 {
+        public static System.Drawing.Bitmap SettingsDark {
             get {
-                object obj = ResourceManager.GetObject("Texts1", resourceCulture);
+                object obj = ResourceManager.GetObject("SettingsDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Texts2 {
+            get {
+                object obj = ResourceManager.GetObject("Texts2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Texts2Dark {
+            get {
+                object obj = ResourceManager.GetObject("Texts2Dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap trsltBG {
+            get {
+                object obj = ResourceManager.GetObject("trsltBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap trsltBGDark {
+            get {
+                object obj = ResourceManager.GetObject("trsltBGDark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

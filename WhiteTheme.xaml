@@ -7,10 +7,100 @@
         <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="Foreground" Value="#FF090675" />
     </Style>
+    
     <Style x:Key="TextBoxStyle" TargetType="TextBox">
         <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="Foreground" Value="#FF090675" />
     </Style>
+
+    <Style x:Key="ImageUnderCTTextBox" TargetType="Image">
+        <Setter Property="Source" Value="Resources/ctTextBG.png"/>
+    </Style>
+
+    <Style x:Key="ImageUnderTrst" TargetType="Image">
+        <Setter Property="Source" Value="Resources/trsltBG.png"/>
+    </Style>
+
+    <Style x:Key="TextsTabHeader" TargetType="TabItem">
+        <Setter Property="Header">
+            <Setter.Value>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5" />
+                        <RowDefinition MinHeight="60" MaxHeight="2.5 cm" />
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="1" Grid.Column="1" Source="Resources/Texts2.png" />
+                </Grid>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CustomTextTabHeader" TargetType="TabItem">
+        <Setter Property="Header">
+            <Setter.Value>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5" />
+                        <RowDefinition MinHeight="60" MaxHeight="2.5 cm" />
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="1" Grid.Column="1" Source="Resources/CustomText.png" />
+                </Grid>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DictTabHeader" TargetType="TabItem">
+        <Setter Property="Header">
+            <Setter.Value>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5" />
+                        <RowDefinition MinHeight="60" MaxHeight="2.5 cm" />
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="1" Grid.Column="1" Source="Resources/Dict.png" />
+                </Grid>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SettingsTabHeader" TargetType="TabItem">
+        <Setter Property="Header">
+            <Setter.Value>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10" />
+                        <RowDefinition MinHeight="60" MaxHeight="2.5 cm" />
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="1" Grid.Column="1" Source="Resources/Settings.png" />
+                </Grid>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="TextBlockStyle" TargetType="TextBlock">
         <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="Foreground" Value="#FF090675" />

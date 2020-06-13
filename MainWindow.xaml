@@ -12,22 +12,7 @@
         <Image HorizontalAlignment="Left" Height="2.5 cm" Margin="10,10,0,0" VerticalAlignment="Top" Panel.ZIndex="5" Style="{DynamicResource LogoStyle}"/>
         <TabControl Name="TabCont" TabStripPlacement="Left" Grid.Row="2" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Margin="10" TabIndex="214748364" Panel.ZIndex="1" >
             <TabItem Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="-80,0,0,0" Height="2.4 cm" Width="0.1" />
-            <TabItem Name="ReadyTextList" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
-                <TabItem.Header>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10" />
-                            <RowDefinition MinHeight="60" MaxHeight="2.5 cm" />
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Texts.png" />
-                    </Grid>
-                </TabItem.Header>
+            <TabItem Name="ReadyTextList" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource TextsTabHeader}">
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2.5 cm"/>
@@ -42,7 +27,7 @@
                     <ScrollViewer  Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" Grid.RowSpan="2">
                         <StackPanel Name="Panel" />
                     </ScrollViewer>
-                    <Image Source="pack://application:,,,/Resources/bulldog.png" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="20,0,10,10"/>
+                    <Image Source="Resources/bulldog.png" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Margin="20,0,10,10"/>
                     <Label Content="Выберите текст" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}"/>
 
                     <StackPanel Grid.Column="1" Margin="5,5,0,0">
@@ -58,26 +43,9 @@
                         <CheckBox Name="C1" Content="advanced (C1)" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Margin="0,0,0,5" Style="{DynamicResource CheckBoxStyle}"/>
                         <CheckBox Name="Custom" Content="Польз. тексты" Checked="AddDifficult" Unchecked="RemoveDifficult" IsChecked="True" FontFamily="Ubuntu" Style="{DynamicResource CheckBoxStyle}"/>
                     </StackPanel>
-
-
                 </Grid>
             </TabItem>
-            <TabItem Name="UserTextZone" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" >
-                <TabItem.Header>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10" />
-                            <RowDefinition MinHeight="60" MaxHeight="2.5 cm"/>
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/CustomText.png" />
-                    </Grid>
-                </TabItem.Header>
+            <TabItem Name="UserTextZone" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource CustomTextTabHeader}">
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MaxHeight="2.5 cm"/>
@@ -95,13 +63,15 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    <Image Grid.Row="2" Grid.Column="1" Stretch="Fill" Style="{DynamicResource ImageUnderCTTextBox}"/>
+                    <Image Grid.Row="4" Grid.Column="1" Stretch="Fill" Style="{DynamicResource ImageUnderCTTextBox}"/>
                     <Label Content="Загрузка пользовательского текста" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}" Grid.Column="1" Grid.ColumnSpan="3"/>
                     <Image Source="pack://application:,,,/Resources/DragAndDrop.png" 
                            Grid.Row="1" Grid.Column="3" AllowDrop="True" Drop="TextDropEvent" Grid.RowSpan="5" Margin="0,20,0,0" HorizontalAlignment="Center" />
                     <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource LabelStyle}" FontFamily="Ubuntu">
                         Название
                     </Label>
-                    <TextBox Name ="CustomTittle" Text="" Grid.Row="2" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}">
+                    <TextBox Name ="CustomTittle" Text="" Grid.Row="2" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}" Panel.ZIndex="5" BorderBrush="{x:Null}">
                         <TextBox.SelectionBrush>
                             <SolidColorBrush Color="#FF9696FF"/>
                         </TextBox.SelectionBrush>
@@ -109,7 +79,7 @@
                     <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{DynamicResource LabelStyle}" FontFamily="Ubuntu">
                         Автор
                     </Label>
-                    <TextBox Name ="CustomA" Text="" Grid.Row="4" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}">
+                    <TextBox Name ="CustomA" Text="" Grid.Row="4" Grid.Column="1" Margin="10" Style="{DynamicResource TextBoxStyle}" Panel.ZIndex="5" BorderBrush="{x:Null}">
                         <TextBox.SelectionBrush>
                             <SolidColorBrush Color="#FF9696FF"/>
                         </TextBox.SelectionBrush>
@@ -120,22 +90,7 @@
                     <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="30" Name="MakeCustomButton" Content="Загрузить текст" FontSize="25" Click="MakeCustomButton_OnClick" Style="{DynamicResource LongButtonStyle}" FontFamily="Ubuntu" ></Button>
                 </Grid>
             </TabItem>
-            <TabItem Name="DictZone" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" MouseEnter="RefreshListbox">
-                <TabItem.Header>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10" />
-                            <RowDefinition MinHeight="60" MaxHeight="2.5 cm"/>
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Dict.png" />
-                    </Grid>
-                </TabItem.Header>
+            <TabItem Name="DictZone" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" MouseEnter="RefreshListbox" Style="{DynamicResource DictTabHeader}">
                 <Grid Margin="10,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*" MaxWidth="2.5 cm"/>
@@ -181,7 +136,7 @@
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2.5 cm"/>
-                        <RowDefinition Height="46*"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
@@ -204,28 +159,14 @@
                         </FlowDocument>
                     </RichTextBox>
                     <Button Content="Перевести" Name="TranslateBotton" Grid.Row="3" Grid.Column="1" Margin="15,10" Click="TranslateButton" Style="{DynamicResource ButtonStyle}"></Button>
-                    <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="10,0" Style="{DynamicResource TextStyle}" />
+                    <RichTextBox Name="ResBox" Grid.Column="1"  Grid.Row="1" Margin="12,12,12,22" Style="{DynamicResource TextStyle}" Panel.ZIndex="5" BorderBrush="{x:Null}" />
+                    <Image Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Style="{DynamicResource ImageUnderTrst}" Stretch="Fill"/>
                     <Label Name="WorkTittle" Content="Tittle" Grid.Row="0" Grid.Column="0"  FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}"/>
                     <Button Content="Показать перевод" Grid.Row="4" Grid.Column="1" Margin="15,10" Name="TempBut" Click="ShowTranslateButton" Style="{DynamicResource ButtonStyle}" ></Button>
                     <Button Name="AddToDict" Grid.Row="2" Grid.Column="1" Margin="15,10" Content="Добавить в словарь" Click="AddToDict_OnClick" Style="{DynamicResource ButtonStyle}"></Button>
                 </Grid>
             </TabItem>
-            <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseEnter="Kostyl">
-                <TabItem.Header>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition MinWidth="60" MaxWidth="2.5 cm"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10" />
-                            <RowDefinition MinHeight="60" MaxHeight="2.5 cm"/>
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="1" Grid.Column="1" Source="Resources/Settings.png" />
-                    </Grid>
-                </TabItem.Header>
+            <TabItem Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseEnter="Kostyl" Style="{DynamicResource SettingsTabHeader}">
                 <Grid Margin="10,0,0,0">
                     <Label Content="Настройки" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="40" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}" Margin="0,25,0,0"/>
                     <Label Content="Тема оформления приложения" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,110,0,0" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}" FontSize="24"/>
