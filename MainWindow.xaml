@@ -118,7 +118,7 @@
                                     </Grid>
                                     <StackPanel.ContextMenu>
                                         <ContextMenu >
-                                            <MenuItem  Header="Delete" Click="DeleteWordMenuItem"/>
+                                            <MenuItem  Header="Удалить из словаря" Click="DeleteWordMenuItem"/>
                                         </ContextMenu>
                                     </StackPanel.ContextMenu>
                                 </StackPanel>
@@ -172,7 +172,6 @@
                     <Label Content="Тема оформления приложения" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,110,0,0" FontFamily="Ubuntu" Style="{DynamicResource LabelStyle}" FontSize="24"/>
                     <RadioButton Content="Светлая" VerticalAlignment="Top" Checked="WhiteThemeChanger" IsChecked="True" Margin="0,155,0,0" FontFamily="Ubuntu" FontSize="22" Style="{DynamicResource RadioButtonStyle}" HorizontalAlignment="Left"/>
                     <RadioButton Content="Тёмная" VerticalAlignment="Top" Checked="DarkThemeChanger" Margin="0,195,0,0" FontFamily="Ubuntu" FontSize="22" Style="{DynamicResource RadioButtonStyle}" HorizontalAlignment="Left"/>
-                    <Button Height="100" Style="{DynamicResource LongButtonStyle}" VerticalAlignment="Center" Margin="0,200,0,0">Under construction</Button>
                     <TextBox Name="fontSizeBox" Margin="265,250,0,0" TextChanged="FontSizeBox_OnTextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="35" FontFamily="Ubuntu" FontSize="24" TextAlignment="Center" Style="{DynamicResource TextBoxStyle}">20</TextBox>
                     <TextBox x:Name="testtext" Margin="10,295,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1024" Height="45" Text="Съешь же ещё этих мягких французских булок, да выпей чаю." FontFamily="Ubuntu" IsReadOnly="True" Style="{DynamicResource TextBoxStyle}">
                         <TextBox.SelectionTextBrush>
